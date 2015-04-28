@@ -5,11 +5,9 @@
 # but you can also edit it by hand.
 
 meteor-platform
-autopublish
-insecure
 manuel:viewmodel
-manuel:viewmodel-explorer
 semantic:ui
 flemay:less-autoprefixer
 stylus
 accounts-password
+mike:mocha
