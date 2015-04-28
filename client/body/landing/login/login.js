@@ -1,6 +1,6 @@
 var emailRegex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
 
-Template.login.viewmodel({
+Template.login.viewmodel('login', {
   isNew: true,
   signText: function() {
     if (this.isNew()) return 'Sign Up';
@@ -21,5 +21,29 @@ Template.login.viewmodel({
   error: function() {
     return this.nameInvalid() || this.emailInvalid() || this.passwordInvalid();
   },
-  signHover: false
+  signHover: false,
+
+  enter: function() {
+    if (this.error()) return;
+
+    if (this.isNew()){
+      Accounts.createUser({
+        email: this.email(),
+        password: this.password(),
+        profile: {
+          name: this.name()
+        }
+      }, function(err){
+        if (err) {
+          toastr.error("Could not create your user:<br>" + err.reason);
+        }
+      })
+    } else {
+      Meteor.loginWithPassword(this.email(), this.password(), function(err){
+        if (err) {
+          toastr.error("Could not log you in:<br>" + err.reason);
+        }
+      });
+    }
+  }
 })
