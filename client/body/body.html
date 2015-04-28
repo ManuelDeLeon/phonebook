@@ -1,0 +1,12 @@
+<body>
+  {{> header}}
+  <div class="ui one column centered grid">
+    <div id="body-main" class="column">
+      {{#if currentUser}}
+          Main App
+      {{else}}
+        {{> landing }}
+      {{/if}}
+    </div>
+  </div>
+</body>
