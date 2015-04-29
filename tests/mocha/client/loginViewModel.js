@@ -91,6 +91,42 @@ if (!(typeof MochaWeb === 'undefined')){
         });
       });
 
+      describe("enter function", function(){
+        var calledCreateUser;
+        var calledLoginWithPassword;
+        Accounts.createUser = function() {
+          calledCreateUser = true;
+        };
+        Meteor.loginWithPassword = function() {
+          calledLoginWithPassword = true;
+        };
+        beforeEach(function(){
+          calledCreateUser = false;
+          calledLoginWithPassword = false;
+        });
+        it("should not do anything by default (with error)", function(){
+          vm.enter();
+          chai.assert.isFalse(calledCreateUser);
+          chai.assert.isFalse(calledLoginWithPassword);
+        });
+        it("should create user if isNew", function(){
+          vm.name('X');
+          vm.email('a@a.com');
+          vm.password('12345678');
+          vm.enter();
+          chai.assert.isTrue(calledCreateUser);
+          chai.assert.isFalse(calledLoginWithPassword);
+        });
+
+        it("should login user if isNew == false", function(){
+          vm.email('a@a.com');
+          vm.password('12345678');
+          vm.isNew(false);
+          vm.enter();
+          chai.assert.isFalse(calledCreateUser);
+          chai.assert.isTrue(calledLoginWithPassword);
+        });
+      });
     });
   });
 }
