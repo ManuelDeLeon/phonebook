@@ -1,0 +1,28 @@
+<template name="alert">
+    <div class="ui basic modal">
+      <i class="close icon"></i>
+      <div class="header">
+        {{header}}
+      </div>
+      <div class="content">
+        <div class="image">
+          <i class="{{image}} icon"></i>
+        </div>
+        <div class="description">
+          <p>{{description}}</p>
+        </div>
+      </div>
+      <div class="actions">
+        <div class="two fluid ui inverted buttons">
+          <div class="ui red cancel basic inverted button">
+            <i class="remove icon"></i>
+            No
+          </div>
+          <div class="ui green ok basic inverted button">
+            <i class="checkmark icon"></i>
+            Yes
+          </div>
+        </div>
+      </div>
+    </div>
+</template>

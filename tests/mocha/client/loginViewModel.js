@@ -5,10 +5,11 @@ if (!(typeof MochaWeb === 'undefined')){
       var emailError = 'Valid email is required';
       var passwordError = 'Password must be at least 8 characters long';
       var vm;
+
       beforeEach(function() {
-        vm = ViewModel.byId("login");
-        vm.reset();
+        vm = Template.login.createViewModel();
       });
+
       it("should have default values", function(){
         chai.assert.equal(vm.name(), '');
         chai.assert.equal(vm.email(), '');

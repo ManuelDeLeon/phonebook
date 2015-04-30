@@ -1,0 +1,16 @@
+<template name="categories">
+  <div class="ui vertical menu">
+    <a class="teal item" data-bind="class: { active: showAll }, click: selectAll">
+      <b>All Categories</b>
+    </a>
+    {{#each categories}}
+        {{> category }}
+    {{/each }}
+    <div class="item">
+      <div class="ui transparent icon input">
+        <input type="text" placeholder="New Category..." data-bind="value: newCategory, returnKey: addNewCategory">
+        <i class="plus icon green" data-bind="if: newCategory, click: addNewCategory, attr: { title: addTitle }" ></i>
+      </div>
+    </div>
+  </div>
+</template>

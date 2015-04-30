@@ -1,5 +1,4 @@
 <template name="login">
-  <br>
   <div class="ui three column centered grid">
     <div class="column">
       <div class="ui buttons">
@@ -29,14 +28,14 @@
         <div class="field required" data-bind="class: { error: signHover && emailInvalid }">
           <label>Email</label>
           <div class="ui icon input">
-            <input type="text" placeholder="Email" data-bind="value: email">
+            <input type="text" placeholder="Email" data-bind="value: email, returnKey: enter">
             <i class="mail icon"></i>
           </div>
         </div>
         <div class="field required" data-bind="class: { error: signHover && passwordInvalid }">
           <label>Password</label>
           <div class="ui icon input">
-            <input type="password" data-bind="value: password">
+            <input type="password" data-bind="value: password, returnKey: enter">
             <i class="lock icon"></i>
           </div>
         </div>
