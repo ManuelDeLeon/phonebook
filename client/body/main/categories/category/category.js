@@ -12,11 +12,15 @@ Template.category.viewmodel(
       this.parent().selected(this._id());
     },
     delete: function() {
+      var self = this;
       Client.alert({
-        header: "Are you sure you want to delete this category?",
-        description: "Description",
+        header: "Are you sure you want to delete category '" + self.name() + "'?",
+        description: "You're about to delete category '" + self.name() + "'. This will delete all contacts in this category. Do you want to delete it?",
         image: "trash",
-        onApprove: function(){ console.log("OK"); }
-      }
+        onApprove: function () {
+          Categories.remove(self._id());
+        }
+      });
+    }
   }
 );

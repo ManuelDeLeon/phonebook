@@ -27,8 +27,7 @@ livedata@1.0.13
 localstorage@1.0.3
 logging@1.0.7
 manuel:reactivearray@1.0.5
-manuel:viewmodel@1.5.9
-matb33:collection-hooks@0.7.13
+manuel:viewmodel@1.6.0
 meteor@1.1.6
 meteor-platform@1.2.2
 minifiers@1.1.5
@@ -52,11 +51,11 @@ sha@1.0.3
 spacebars@1.0.6
 spacebars-compiler@1.0.6
 srp@1.0.3
-stylus@1.0.7
 templating@1.1.1
 tracker@1.0.7
 ui@1.0.6
 underscore@1.0.3
 url@1.0.4
+vsivsi:file-collection@1.0.6
 webapp@1.2.0
 webapp-hashing@1.0.3

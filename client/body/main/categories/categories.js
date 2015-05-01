@@ -1,7 +1,4 @@
 Template.categories.viewmodel('categories', {
-  onCreated: function(t){
-    t.subscribe('categories');
-  },
   categories: function() {
     return Categories.find();
   },

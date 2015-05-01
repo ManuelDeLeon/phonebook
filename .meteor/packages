@@ -8,6 +8,5 @@ meteor-platform
 manuel:viewmodel
 semantic:ui
 flemay:less-autoprefixer
-stylus
 accounts-password
-matb33:collection-hooks
+vsivsi:file-collection

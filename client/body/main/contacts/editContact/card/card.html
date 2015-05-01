@@ -1,0 +1,39 @@
+<template name="card">
+  <div class="ui card">
+    <div class="image">
+      <!--<img src="/images/avatar/large/stevie.jpg">-->
+      <div class="ui grid middle aligned celled internally">
+        <div class="column">
+          <div class="ui two column grid">
+            <div class="column">
+              <i class="massive file image outline icon"></i>
+            </div>
+            <div class="column">
+              <p>Drag an image here...</p>
+              <p data-bind="text: imageProgress"></p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="content">
+      <div class="header">Stevie Feliciano</div>
+      <div class="meta">
+        <span class="date">Friends</span>
+      </div>
+    </div>
+    <div class="extra content">
+      <a>
+        <i class="call icon"></i>
+        123-456-7890
+      </a>
+    </div>
+    <div class="extra content">
+      <a>
+        <i class="mail icon"></i>
+        stevie.feliciano@example.com
+      </a>
+    </div>
+  </div>
+</template>

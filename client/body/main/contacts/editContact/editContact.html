@@ -1,0 +1,16 @@
+<template name="editContact">
+  <div data-bind="click: showList" class="ui top attached 2 fluid buttons">
+    <div class="ui button ">Cancel</div>
+    <div class="ui button green ">Add Contact</div>
+  </div>
+  <div class="ui attached segment">
+    <div class="ui two column grid">
+      <div class="ui column">
+        {{> card}}
+      </div>
+      <div class="ui column">
+        {{> editContactForm}}
+      </div>
+    </div>
+  </div>
+</template>
