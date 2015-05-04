@@ -2,6 +2,7 @@ accounts-base@1.2.0
 accounts-password@1.1.1
 autoupdate@1.2.1
 base64@1.0.3
+benjaminrh:jquery-cookie@0.1.0
 binary-heap@1.0.3
 blaze@2.1.2
 blaze-tools@1.0.3
@@ -27,7 +28,7 @@ livedata@1.0.13
 localstorage@1.0.3
 logging@1.0.7
 manuel:reactivearray@1.0.5
-manuel:viewmodel@1.6.0
+manuel:viewmodel@1.6.1
 meteor@1.1.6
 meteor-platform@1.2.2
 minifiers@1.1.5

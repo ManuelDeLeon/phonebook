@@ -1,9 +1,4 @@
-.ui.card .image img
-{
-    height: 290px;
-    width: 290px;
-}
-
+.ui.card .image img,
 .ui.card .image .grid.middle
 {
     height: 290px;

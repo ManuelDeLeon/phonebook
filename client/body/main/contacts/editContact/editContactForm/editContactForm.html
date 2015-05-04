@@ -1,6 +1,5 @@
 <template name="editContactForm">
   <form class="ui form">
-    <h4 class="ui dividing header">Personal Information</h4>
     <div class="field">
       <label>Name</label>
       <input type="text" placeholder="Name">
@@ -15,14 +14,16 @@
     </div>
     <div class="field">
       <label>Category</label>
-      <select class="ui search dropdown">
-        <option value="">Category</option>
-        <option value="AL">Alabama</option>
-        <option value="AL">Alabama</option>
-        <option value="AK">Alaska</option>
-        <option value="AZ">Arizona</option>
-        <option value="AR">Arkansas</option>
+      <select class="ui search dropdown"
+              data-bind="
+                options: categories,
+                optionsText: name,
+                optionsValue: _id,
+                optionsCaption: 'Category...',
+                value: category">
+
       </select>
     </div>
+    <div class="ui button green">Create Contact</div>
   </form>
 </template>

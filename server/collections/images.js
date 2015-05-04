@@ -1,31 +1,22 @@
 Images.allow({
   insert: function(userId, file) {
-    var ref;
-    file.metadata = (ref = file.metadata) != null ? ref : {};
+    if (! userId) return false;
+    file.metadata = file.metadata || {};
     file.metadata._auth = {
       owner: userId
     };
     return true;
   },
   remove: function(userId, file) {
-    var ref, ref1;
-    if (((ref = file.metadata) != null ? (ref1 = ref._auth) != null ? ref1.owner : void 0 : void 0) && userId !== file.metadata._auth.owner) {
-      return false;
-    }
-    return true;
+    if (! userId) return false;
+    return file.metadata && file.metadata._auth && file.metadata._auth.owner === userId;
   },
   read: function(userId, file) {
-    var ref, ref1;
-    if (((ref = file.metadata) != null ? (ref1 = ref._auth) != null ? ref1.owner : void 0 : void 0) && userId !== file.metadata._auth.owner) {
-      return false;
-    }
-    return true;
+    if (! userId) return false;
+    return file.metadata && file.metadata._auth && file.metadata._auth.owner === userId;
   },
   write: function(userId, file, fields) {
-    var ref, ref1;
-    if (((ref = file.metadata) != null ? (ref1 = ref._auth) != null ? ref1.owner : void 0 : void 0) && userId !== file.metadata._auth.owner) {
-      return false;
-    }
-    return true;
+    if (! userId) return false;
+    return file.metadata && file.metadata._auth && file.metadata._auth.owner === userId;
   }
 });

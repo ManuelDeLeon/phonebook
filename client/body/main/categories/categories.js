@@ -4,8 +4,11 @@ Template.categories.viewmodel('categories', {
   },
   newCategory: '',
   addNewCategory: function() {
-    if (!this.newCategory()) return;
-    Categories.insert({ name: this.newCategory() });
+    self = this;
+    if (!self.newCategory()) return;
+    Categories.insert({ name: this.newCategory() }, function(err, id) {
+      self.selected(id);
+    });
     this.newCategory('');
   },
   selected: null,

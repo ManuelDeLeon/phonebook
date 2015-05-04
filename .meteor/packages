@@ -10,3 +10,5 @@ semantic:ui
 flemay:less-autoprefixer
 accounts-password
 vsivsi:file-collection
+benjaminrh:jquery-cookie
+accounts-base
