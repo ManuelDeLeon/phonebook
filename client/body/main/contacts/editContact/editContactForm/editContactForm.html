@@ -2,15 +2,15 @@
   <form class="ui form">
     <div class="field">
       <label>Name</label>
-      <input type="text" placeholder="Name">
+      <input type="text" placeholder="Name" data-bind="value: name">
     </div>
     <div class="field">
       <label>Number</label>
-      <input type="text" placeholder="Number">
+      <input type="text" placeholder="Number" data-bind="value: number">
     </div>
     <div class="field">
       <label>Email</label>
-      <input type="email" placeholder="Email">
+      <input type="email" placeholder="Email" data-bind="value: email">
     </div>
     <div class="field">
       <label>Category</label>
@@ -20,10 +20,10 @@
                 optionsText: name,
                 optionsValue: _id,
                 optionsCaption: 'Category...',
-                value: category">
+                value: categoryId">
 
       </select>
     </div>
-    <div class="ui button green">Create Contact</div>
+    <div class="ui button green" data-bind="click: create">Create Contact</div>
   </form>
 </template>

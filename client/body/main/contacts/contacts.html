@@ -1,7 +1,7 @@
 <template name="contacts">
   <div data-bind="click: toggle, text: toggleText, class: toggleColor" class="ui top attached button"></div>
   {{#if editMode}}
-    {{> editContact}}
+    {{> editContact isNew=isNew}}
   {{else }}
     {{> contactList}}
   {{/if }}

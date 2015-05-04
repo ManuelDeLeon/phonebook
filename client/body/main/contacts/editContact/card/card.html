@@ -18,22 +18,22 @@
       </div>
     </div>
     <div class="content">
-      <div class="header">Stevie Feliciano</div>
+      <div class="header" data-bind="text: name"></div>
       <div class="meta">
-        <span class="date">Friends</span>
+        <span class="date" data-bind="text: category"></span>
       </div>
     </div>
     <div class="extra content">
-      <a>
+      <div>
         <i class="call icon"></i>
-        123-456-7890
-      </a>
+        <span data-bind="text: number"></span>
+      </div>
     </div>
     <div class="extra content">
-      <a>
+      <div>
         <i class="mail icon"></i>
-        stevie.feliciano@example.com
-      </a>
+        <span data-bind="text: email"></span>
+      </div>
     </div>
   </div>
 </template>
