@@ -1,0 +1,9 @@
+<template name="contactRow">
+  <tr data-bind="hover: rowHover, click: rowClick, class: { warning: rowHover }">
+    <td><img class="ui avatar image" data-bind="attr: { src: image }"></td>
+    <td data-bind="text: name"></td>
+    <td data-bind="text: number"></td>
+    <td data-bind="text: email"></td>
+    <td data-bind="text: category"></td>
+  </tr>
+</template>

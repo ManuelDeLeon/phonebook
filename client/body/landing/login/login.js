@@ -1,5 +1,3 @@
-var emailRegex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
-
 Template.login.viewmodel('login', {
   isNew: true,
   signText: function() {
@@ -12,7 +10,7 @@ Template.login.viewmodel('login', {
   },
   email: '',
   emailInvalid: function() {
-    return !!this.email() && emailRegex.test(this.email()) ? '' : 'Valid email is required';
+    return Client.validEmail(this.email()) ? '' : 'Valid email is required';
   },
   password: '',
   passwordInvalid: function() {

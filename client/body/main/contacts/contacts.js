@@ -1,15 +1,15 @@
 Template.contacts.viewmodel('contacts', {
   editMode: false,
-  isNew: false,
+  selected: null,
   toggle: function() {
-    var addNew = !this.editMode()
-    this.isNew(addNew);
+    this.selected(null);
+    var addNew = !this.editMode();
     this.editMode(addNew);
   },
   toggleText: function() {
     return this.editMode() ? "Back To Contact List" : "Add New Contact...";
   },
   toggleColor: function() {
-    return this.editMode() ? "" : "green";
+    return this.editMode() ? "teal" : "green";
   }
-}, ['editMode', 'isNew'])
+}, ['editMode'])
