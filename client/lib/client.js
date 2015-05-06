@@ -6,5 +6,6 @@ Client = {
   },
   validEmail: function(email){
     return !!email && emailRegex.test(email);
-  }
+  },
+  defaultImage: '/images/user.png'
 }

@@ -4,7 +4,9 @@
         {{> categories }}
       </div>
       <div  class="twelve wide column">
-        {{> contacts }}
+        {{#if hasCategories }}
+            {{> contacts }}
+        {{/if }}
       </div>
     </div>
 </template>

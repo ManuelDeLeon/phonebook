@@ -1,4 +1,11 @@
-Template.main.onCreated(function() {
-  this.subscribe('main');
-  $.cookie( 'X-Auth-Token', Accounts._storedLoginToken());
-})
+Template.main.viewmodel(
+  {
+    onCreated: function(template) {
+      template.subscribe('main');
+    },
+    hasCategories: function () {
+      return Categories.findOne();
+    }
+  },
+  'hasCategories'
+)

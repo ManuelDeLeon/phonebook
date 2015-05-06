@@ -1,6 +1,20 @@
+var baseDir = process.env.PWD || '';
 Server = {
-
-}
+  tempDir: baseDir + '/.uploads/tmp',
+  uploadDir: baseDir + '/.uploads',
+  allowedImageTypes: ['.jpg', '.jpeg', '.png', '.gif'],
+  deleteImages: function(id) {
+    for (var i = 0, len = Server.allowedImageTypes.length; i < len; i++) {
+      var type = Server.allowedImageTypes[i];
+      var file = Server.uploadDir + "/" + id + type;
+      try {
+        fs.unlink(file, function(){});
+      } catch (e) {
+        // Nothing
+      }
+    }
+  }
+};
 
 Server.allow = {
   owner: {

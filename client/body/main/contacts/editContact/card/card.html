@@ -1,21 +1,7 @@
 <template name="card">
   <div class="ui card">
     <div class="image">
-      <!--<img src="/images/avatar/large/stevie.jpg">-->
-      <div class="ui grid middle aligned celled internally" data-bind="if: _id">
-        <div class="column">
-          <div class="ui two column grid">
-            <div class="column">
-              <i class="massive file image outline icon"></i>
-            </div>
-            <div class="column">
-              <p>Drag an image here...</p>
-              <p data-bind="text: imageProgress"></p>
-            </div>
-          </div>
-
-        </div>
-      </div>
+      <img data-bind="attr: { src: image }">
     </div>
     <div class="content">
       <div class="header" data-bind="text: name"></div>

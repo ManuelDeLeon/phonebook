@@ -1,5 +1,9 @@
 Template.contactList.viewmodel({
   contacts: function() {
-    return Contacts.find();
+    var categories = ViewModel.byId("categories");
+    var categoryId =  categories && categories.selected();
+    var find = categoryId && { categoryId: categoryId } || {};
+
+    return Contacts.find(find);
   }
 }, 'contacts')

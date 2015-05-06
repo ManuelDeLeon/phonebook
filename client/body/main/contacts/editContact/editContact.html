@@ -9,4 +9,14 @@
       </div>
     </div>
   </div>
+  {{#if editId }}
+  <div class="ui bottom attached segment">
+    <form class="ui form">
+      <div class="field" >
+        <label>Picture</label>
+        {{> upload_semanticUI callbacks=uploaderEvents formData=uploaderData }}
+      </div>
+    </form>
+  </div>
+  {{/if }}
 </template>

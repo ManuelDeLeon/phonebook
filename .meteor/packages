@@ -9,6 +9,7 @@ manuel:viewmodel
 semantic:ui
 flemay:less-autoprefixer
 accounts-password
-vsivsi:file-collection
-benjaminrh:jquery-cookie
-accounts-base
+tomi:upload-server
+tomi:upload-jquery
+matb33:collection-hooks
+peerlibrary:fs

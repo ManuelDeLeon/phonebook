@@ -12,6 +12,9 @@ Template.contactRow.viewmodel(
     category: function() {
       var cat = Categories.findOne(this.categoryId())
       return cat && cat.name;
+    },
+    imageUrl: function(){
+      return this.image() + "?v=" + this.imageVersion();
     }
   }
 );

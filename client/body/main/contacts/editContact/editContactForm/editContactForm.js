@@ -10,30 +10,30 @@ Template.editContactForm.viewmodel('editContactForm',
         name: '',
         number: '',
         email: '',
-        categoryId: ''
+        categoryId: ViewModel.byId("categories").selected()
       }
     }
   },
   {
-    nameInvalid: function() {
+    nameInvalid: function () {
       return !this.name();
     },
-    numberInvalid: function() {
+    numberInvalid: function () {
       return !this.number();
     },
-    emailInvalid: function() {
+    emailInvalid: function () {
       return !Client.validEmail(this.email());
     },
-    categoryIdInvalid: function() {
+    categoryIdInvalid: function () {
       return !this.categoryId();
     },
     categories: function () {
       return Categories.find();
     },
-    upsertText: function() {
+    upsertText: function () {
       return this._id() ? "Update Information" : "Create Contact";
     },
-    canUpsert: function() {
+    canUpsert: function () {
       return !( this.nameInvalid() || this.numberInvalid() || this.emailInvalid() || this.categoryIdInvalid());
     },
     upsertHover: false,
@@ -48,15 +48,16 @@ Template.editContactForm.viewmodel('editContactForm',
         email: this.email(),
         categoryId: this.categoryId()
       };
-      if (self._id()){
-        Contacts.update( self._id(), { $set: contact }, function(err) {
+      if (self._id()) {
+        Contacts.update(self._id(), {$set: contact}, function (err) {
           if (err) {
             toastr.error("Could not update contact:<br>" + err.reason);
           }
         });
       } else {
-        contact.image = '';
-        Contacts.insert(contact, function(err, id) {
+        contact.image = Client.defaultImage;
+        contact.imageVersion = 1;
+        Contacts.insert(contact, function (err, id) {
           if (err) {
             toastr.error("Could not create contact:<br>" + err.reason);
           } else {
@@ -64,7 +65,6 @@ Template.editContactForm.viewmodel('editContactForm',
           }
         });
       }
-
     }
   }
 );
