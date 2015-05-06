@@ -18,6 +18,7 @@ Template.category.viewmodel(
         description: "You're about to delete category '" + self.name() + "'. This will delete all contacts in this category. Do you want to delete it?",
         image: "trash",
         onApprove: function () {
+          self.parent().selected(null);
           Categories.remove(self._id());
         }
       });
