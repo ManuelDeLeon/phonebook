@@ -1,13 +1,15 @@
 <template name="login">
-  <div class="ui three column centered grid">
-    <div class="column">
-      <div class="ui buttons">
-        <div class="ui button" data-bind="click: isNew(true), class: { positive: isNew }">I'm new here</div>
-        <div class="or"></div>
-        <div class="ui button" data-bind="click: isNew(false), class: { positive: !isNew }">I have an account</div>
+  <div class="ui centered grid">
+    <div class="six wide column">
+      <div class="ui two column grid top attached">
+        <div class="column">
+          <div class="ui button fluid" data-bind="click: isNew(true), class: { positive: isNew }">I'm new here</div>
+        </div>
+        <div class="column">
+          <div class="ui button fluid" data-bind="click: isNew(false), class: { positive: !isNew }">I have an account</div>
+        </div>
       </div>
-      <br>
-      <div class="ui form segment">
+      <div class="ui form segment attached">
         <div class="ui right rail" data-bind="if: signHover && error">
           <div class="ui red segment">
             <ul class="ui list">

@@ -1,9 +1,12 @@
 <template name="contactRow">
-  <tr data-bind="hover: rowHover, click: rowClick, class: { warning: rowHover }">
+  <tr class="contactRow" data-bind="hover: rowHover, click: rowClick, class: { warning: rowHover }">
     <td><img class="ui avatar image" data-bind="attr: { src: imageUrl }"></td>
     <td data-bind="text: name"></td>
     <td data-bind="text: number"></td>
     <td data-bind="text: email"></td>
     <td data-bind="text: category"></td>
+    <td>
+      <i class="remove icon red" data-bind="if: rowHover, click: delete, attr: { title: deleteTitle }" ></i>
+    </td>
   </tr>
 </template>

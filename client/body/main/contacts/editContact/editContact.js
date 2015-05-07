@@ -1,8 +1,5 @@
 Template.editContact.viewmodel('editContact',
   {
-    cardViewModel: function() {
-      return Card.editViewModel;
-    },
     uploaderEvents: function() {
       return {
         finished: function (index, fileInfo, templateContext) {
@@ -25,5 +22,5 @@ Template.editContact.viewmodel('editContact',
       return vm && vm._id();
     }
   },
-  ['uploaderEvents', 'uploaderData', 'cardViewModel', 'editId']
+  ['uploaderEvents', 'uploaderData', 'editId']
 )

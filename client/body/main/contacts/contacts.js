@@ -1,15 +1,18 @@
 Template.contacts.viewmodel('contacts', {
   editMode: false,
   selected: null,
-  toggle: function() {
-    this.selected(null);
-    var addNew = !this.editMode();
-    this.editMode(addNew);
+  changeEditMode: function(edit) {
+    if (edit === this.editMode()) return;
+    if (!edit) this.selected(null);
+    this.editMode(edit);
   },
-  toggleText: function() {
-    return this.editMode() ? "Back To Contact List" : "Add New Contact...";
+  showEdit: function() {
+    if (this.selected()) {
+      this.changeEditMode(!!Contacts.findOne(this.selected()));
+    }
+    return this.editMode();
   },
-  toggleColor: function() {
-    return this.editMode() ? "teal" : "green";
+  editText: function() {
+    return this.selected() ? "Edit Contact" : "New Contact";
   }
-}, ['editMode'])
+}, ['showEdit']);

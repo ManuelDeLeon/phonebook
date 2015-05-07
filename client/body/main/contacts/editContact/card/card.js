@@ -1,5 +1,4 @@
-Card = {}
-Card.editViewModel = {
+Template.card.viewmodel({
   editVM: function(){
     return ViewModel.byId("editContactForm");
   },
@@ -29,17 +28,4 @@ Card.editViewModel = {
     }
 
   }
-}
-
-Card.readViewModel = {
-  name: 'x',
-  number: '',
-  email: '',
-  category: ''
-}
-
-Template.card.viewmodel(
-  function(vm){
-    return vm;
-  }
-);
+});

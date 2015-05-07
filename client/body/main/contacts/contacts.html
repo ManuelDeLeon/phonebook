@@ -1,6 +1,13 @@
 <template name="contacts">
-  <div data-bind="click: toggle, text: toggleText, class: toggleColor" class="ui top attached button"></div>
-  {{#if editMode}}
+  <div class="ui two column grid top attached">
+    <div class="column">
+      <div class="ui button fluid" data-bind="click: changeEditMode(false), class: { positive: !editMode }">Contacts</div>
+    </div>
+    <div class="column">
+      <div class="ui button fluid" data-bind="click: changeEditMode(true), text: editText, class: { positive: editMode }">New Contact</div>
+    </div>
+  </div>
+  {{#if showEdit}}
     {{> editContact }}
   {{else }}
     {{> contactList }}
