@@ -13,6 +13,11 @@ Server = {
         // Nothing
       }
     }
+  },
+  getFileName: function (fileInfo, formData) {
+    var name = fileInfo.name;
+    Server.deleteImages(formData._id);
+    return formData._id + name.substring(name.lastIndexOf("."));
   }
 };
 
@@ -29,4 +34,4 @@ Server.allow = {
     },
     fetch: ['owner']
   }
-}
+};

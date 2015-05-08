@@ -1,8 +1,7 @@
 Template.login.viewmodel('login', {
   isNew: true,
   signText: function() {
-    if (this.isNew()) return 'Sign Up';
-    return 'Sign In';
+    return this.isNew() ? 'Sign Up' : 'Sign In';
   },
   name: '',
   nameInvalid: function() {

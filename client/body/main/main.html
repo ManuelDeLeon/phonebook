@@ -3,10 +3,8 @@
       <div  class="four wide column">
         {{> categories }}
       </div>
-      <div  class="twelve wide column">
-        {{#if hasCategories }}
-            {{> contacts }}
-        {{/if }}
+      <div  class="twelve wide column" data-bind="if: hasCategories">
+        {{> contacts }}
       </div>
     </div>
 </template>

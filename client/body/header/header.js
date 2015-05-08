@@ -3,4 +3,4 @@ Template.header.viewmodel('header', {
   hasUser: function(){
     return Client.hasUser();
   }
-}, 'hasUser');
+});
