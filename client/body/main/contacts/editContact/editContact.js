@@ -1,5 +1,40 @@
+var cardViewModel = {
+  editVM: function(){
+    return ViewModel.byId("editContactForm");
+  },
+  _id: function(){
+    return this.editVM() && this.editVM()._id();
+  },
+  name: function(){
+    return this.editVM() && this.editVM().name();
+  },
+  number: function(){
+    return this.editVM() && this.editVM().number();
+  },
+  email: function(){
+    return this.editVM() && this.editVM().email();
+  },
+  category: function(){
+    categoryId = this.editVM() && this.editVM().categoryId()
+    var category = Categories.findOne(categoryId);
+    return category ? category.name : '';
+  },
+  image: function(){
+    var contact = Contacts.findOne(this._id());
+    if (contact){
+      return contact.image + "?v=" + contact.imageVersion;
+    } else {
+      return Client.defaultImage;
+    }
+
+  }
+};
+
 Template.editContact.viewmodel('editContact',
   {
+    cardViewModel: function() {
+      return cardViewModel;
+    },
     uploaderEvents: function() {
       return {
         finished: function (index, fileInfo, templateContext) {
@@ -22,5 +57,5 @@ Template.editContact.viewmodel('editContact',
       return vm && vm._id();
     }
   },
-  ['uploaderEvents', 'uploaderData', 'editId']
+  ['uploaderEvents', 'uploaderData', 'editId', 'cardViewModel']
 )

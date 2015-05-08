@@ -1,6 +1,15 @@
 <template name="contactRow">
   <tr class="contactRow" data-bind="hover: rowHover, click: rowClick, class: { warning: rowHover }">
-    <td><img class="ui avatar image" data-bind="attr: { src: imageUrl }"></td>
+    <td>
+      <img class="ui avatar image" data-bind="attr: { src: imageUrl }">
+      {{#if rowHover }}
+        <div class="ui form">
+          <div class="ui left rail">
+            {{> card cardViewModel }}
+          </div>
+        </div>
+      {{/if }}
+    </td>
     <td data-bind="text: name"></td>
     <td data-bind="text: number"></td>
     <td data-bind="text: email"></td>

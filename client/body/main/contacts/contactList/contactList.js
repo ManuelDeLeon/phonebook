@@ -19,6 +19,6 @@ Template.contactList.viewmodel({
     if (categoryId){
       find.categoryId = categoryId;
     }
-    return Contacts.find(find);
+    return Contacts.find(find, { sort: { name: 1 } } );
   }
 }, 'contacts');

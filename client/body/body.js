@@ -1,5 +1,5 @@
 Template.body.helpers({
   hasUser: function(){
-    return Meteor.userId() || Meteor.loggingIn();
+    return Client.hasUser();
   }
 });

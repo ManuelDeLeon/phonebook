@@ -3,20 +3,20 @@
     <div class="title item">
       <b>Phonebook</b>
     </div>
-    {{#if currentUser }}
-    <div class="item">
+
+    <div class="item" data-bind="if: hasUser">
       {{> loginButtons}}
     </div>
-    <div class="right menu ">
-    <div class="item">
-      <div class="ui icon input inverted">
-        <input type="text" placeholder="Search..." data-bind="value: searchText, delay: 400">
-        <i class="search link icon" data-bind="if: !searchText"></i>
-        <i class="remove link icon" data-bind="if: searchText, click: searchText('')"></i>
+
+    <div class="right menu " data-bind="if: hasUser">
+      <div class="item">
+        <div class="ui icon input inverted">
+          <input type="text" placeholder="Search..." data-bind="value: searchText, delay: 400">
+          <i class="search link icon" data-bind="if: !searchText"></i>
+          <i class="remove link icon" data-bind="if: searchText, click: searchText('')"></i>
+        </div>
       </div>
     </div>
-    </div>
-    {{/if }}
 
   </div>
 </template>

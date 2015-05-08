@@ -7,5 +7,8 @@ Client = {
   validEmail: function(email){
     return !!email && emailRegex.test(email);
   },
-  defaultImage: '/images/user.png'
+  defaultImage: '/images/user.png',
+  hasUser: function() {
+    return Meteor.userId() || Meteor.loggingIn();
+  }
 }

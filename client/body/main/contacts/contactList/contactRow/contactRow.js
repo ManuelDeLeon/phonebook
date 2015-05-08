@@ -28,6 +28,16 @@ Template.contactRow.viewmodel(
           Contacts.remove(self._id());
         }
       });
+    },
+    cardViewModel: function() {
+      return {
+        name: this.name(),
+        number: this.number(),
+        email: this.email(),
+        category: this.category(),
+        image: this.imageUrl()
+      };
     }
-  }
+  },
+  ['cardViewModel', 'rowHover']
 );

@@ -1,3 +1,6 @@
 Template.header.viewmodel('header', {
-  searchText: ''
-})
+  searchText: '',
+  hasUser: function(){
+    return Client.hasUser();
+  }
+}, 'hasUser');
