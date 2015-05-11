@@ -15,18 +15,13 @@ var cardViewModel = {
     return this.editVM() && this.editVM().email();
   },
   category: function(){
-    categoryId = this.editVM() && this.editVM().categoryId()
+    var categoryId = this.editVM() && this.editVM().categoryId()
     var category = Categories.findOne(categoryId);
     return category ? category.name : '';
   },
-  image: function(){
+  imageUrl: function(){
     var contact = Contacts.findOne(this._id());
-    if (contact){
-      return contact.image + "?v=" + contact.imageVersion;
-    } else {
-      return Client.defaultImage;
-    }
-
+    return contact && contact.imageUrl() || Global.defaultImage;
   }
 };
 
@@ -39,7 +34,7 @@ Template.editContact.viewmodel('editContact',
       return {
         finished: function (index, fileInfo, templateContext) {
           var id = templateContext.data.formData._id;
-          Contacts.update( id, { $set: { image: "/upload/" + fileInfo.name }, $inc: { imageVersion: 1 } }, function(err) {
+          Contacts.update( id, { $set: { imageFile: fileInfo.name }, $inc: { imageVersion: 1 } }, function(err) {
             if (err) {
               toastr.error("Could not update contact:<br>" + err.reason);
             }

@@ -1,6 +1,6 @@
 if (!(typeof MochaWeb === 'undefined')){
   MochaWeb.testOnly(function(){
-    describe("Server object", function() {
+    describe("Server", function() {
 
       var arraysAreEqual = function(a, b) {
         return a.length === b.length && a.every(function(elem, i) {
@@ -8,26 +8,39 @@ if (!(typeof MochaWeb === 'undefined')){
           });
       };
 
-      it("should have default properties", function () {
-        var baseDir = process.env.PWD || '';
-        chai.assert.equal(Server.tempDir, baseDir + '/.uploads/tmp');
-        chai.assert.equal(Server.uploadDir, baseDir + '/.uploads');
-        chai.assert.isTrue(arraysAreEqual(Server.allowedImageTypes, ['.jpg', '.jpeg', '.png', '.gif']));
-      });
+      describe("upload", function() {
+        var upload = Server.upload;
+        var init = upload.init;
 
-      describe("deleteImages", function() {
+        describe("init", function() {
 
-        it("should call fs.unlink with right file names", function () {
-          var deletedFiles = [];
-          fs.unlink = function(file) {
-            deletedFiles.push(file);
-          };
-          Server.deleteImages("XYZ");
-          chai.assert.equal(deletedFiles.length, 4);
-          chai.assert.equal(deletedFiles[0], Server.uploadDir + "/XYZ.jpg");
-          chai.assert.equal(deletedFiles[1], Server.uploadDir + "/XYZ.jpeg");
-          chai.assert.equal(deletedFiles[2], Server.uploadDir + "/XYZ.png");
-          chai.assert.equal(deletedFiles[3], Server.uploadDir + "/XYZ.gif");
+          it("should have default properties", function () {
+            var baseDir = process.env.PWD || '';
+            chai.assert.equal(init.tmpDir, baseDir + '/.uploads/tmp');
+            chai.assert.equal(init.uploadDir, baseDir + '/.uploads');
+            chai.assert.equal(init.checkCreateDirectories, true);
+            chai.assert.equal(init.maxFileSize, 2000000);
+            chai.assert.equal(init.acceptFileTypes.toString(), (/.(gif|jpe?g|png)$/i).toString());
+          });
+
+          describe("getFileName", function() {
+
+            it("should have default properties", function () {
+              chai.assert.equal(false, true);
+            });
+          });
+        });
+
+        describe("delete", function() {
+          it("should call fs.unlink with right file name", function () {
+            var deletedFiles = [];
+            fs.unlink = function(file) {
+              deletedFiles.push(file);
+            };
+            upload.delete("XYZ.jpg");
+            chai.assert.equal(deletedFiles.length, 1);
+            chai.assert.equal(deletedFiles[0], init.uploadDir + "/XYZ.jpg");
+          });
         });
       });
 

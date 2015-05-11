@@ -1,7 +1,7 @@
-#body-main {
-  max-width: 1024px;
-}
-
 body {
   background: url("/images/water.jpg") repeat;
+}
+
+#body-main {
+  max-width: 1024px;
 }

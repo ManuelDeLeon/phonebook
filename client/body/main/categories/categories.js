@@ -7,8 +7,12 @@ Template.categories.viewmodel('categories', {
     var self = this;
     if (!self.newCategory()) return;
     Categories.insert({ name: this.newCategory() }, function(err, id) {
-      self.selected(id);
-      self.newCategory('');
+        if (err) {
+          toastr.error("Could not update contact:<br>" + err.reason);
+        } else {
+          self.selected(id);
+          self.newCategory('');
+        }
     });
   },
   selected: null,

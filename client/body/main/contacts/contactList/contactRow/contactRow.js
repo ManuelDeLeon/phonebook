@@ -13,7 +13,7 @@ Template.contactRow.viewmodel(
       return cat && cat.name;
     },
     imageUrl: function(){
-      return this.image() + "?v=" + this.imageVersion();
+      return Contacts.findOne(this._id()).imageUrl();
     },
     deleteTitle: function() {
       return "Delete '" + this.name() + "'";
@@ -35,7 +35,7 @@ Template.contactRow.viewmodel(
         number: this.number(),
         email: this.email(),
         category: this.category(),
-        image: this.imageUrl()
+        imageUrl: this.imageUrl()
       };
     }
   },

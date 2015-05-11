@@ -5,12 +5,14 @@ Template.editContactForm.viewmodel('editContactForm',
     if (selected) {
       return Contacts.findOne(selected);
     } else {
+      var contacts = ViewModel.byId("categories");
+      var categoryId = contacts && contacts.selected();
       return {
         _id: null,
         name: '',
         number: '',
         email: '',
-        categoryId: ViewModel.byId("categories").selected()
+        categoryId: categoryId
       }
     }
   },
@@ -48,6 +50,7 @@ Template.editContactForm.viewmodel('editContactForm',
         email: this.email(),
         categoryId: this.categoryId()
       };
+
       if (self._id()) {
         Contacts.update(self._id(), {$set: contact}, function (err) {
           if (err) {
@@ -55,8 +58,6 @@ Template.editContactForm.viewmodel('editContactForm',
           }
         });
       } else {
-        contact.image = Client.defaultImage;
-        contact.imageVersion = 1;
         Contacts.insert(contact, function (err, id) {
           if (err) {
             toastr.error("Could not create contact:<br>" + err.reason);
