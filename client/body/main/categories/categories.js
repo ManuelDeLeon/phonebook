@@ -8,7 +8,7 @@ Template.categories.viewmodel('categories', {
     if (!self.newCategory()) return;
     Categories.insert({ name: this.newCategory() }, function(err, id) {
         if (err) {
-          toastr.error("Could not update contact:<br>" + err.reason);
+          toastr.error("Could not update contact: <br>" + err.reason);
         } else {
           self.selected(id);
           self.newCategory('');
@@ -16,11 +16,10 @@ Template.categories.viewmodel('categories', {
     });
   },
   selected: null,
-  showAll: function() {
+  autorun: function() {
     if (this.selected() && !Categories.findOne(this.selected())) {
       this.selected(null);
     }
-    return !this.selected() ;
   },
   addTitle: function() {
     return "Add category: " + this.newCategory();

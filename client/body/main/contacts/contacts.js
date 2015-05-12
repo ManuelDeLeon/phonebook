@@ -6,13 +6,12 @@ Template.contacts.viewmodel('contacts', {
     if (!edit) this.selected(null);
     this.editMode(edit);
   },
-  showEdit: function() {
+  autorun: function() {
     if (this.selected()) {
       this.changeEditMode(!!Contacts.findOne(this.selected()));
     }
-    return this.editMode();
   },
   editText: function() {
     return this.selected() ? "Edit Contact" : "New Contact";
   }
-}, ['showEdit']);
+}, ['editMode']);

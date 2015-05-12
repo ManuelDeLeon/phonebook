@@ -14,5 +14,6 @@ tomi:upload-jquery
 matb33:collection-hooks
 peerlibrary:fs
 accounts-ui
-mike:mocha
 dburles:collection-helpers
+manuel:viewmodel-explorer
+msavin:jetsetter

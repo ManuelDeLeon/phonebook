@@ -7,7 +7,7 @@
       <div class="ui button fluid" data-bind="click: changeEditMode(true), text: editText, class: { positive: editMode }">New Contact</div>
     </div>
   </div>
-  {{#if showEdit}}
+  {{#if editMode}}
     {{> editContact }}
   {{else }}
     {{> contactList }}
