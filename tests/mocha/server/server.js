@@ -25,8 +25,11 @@ if (!(typeof MochaWeb === 'undefined')){
 
           describe("getFileName", function() {
 
-            it("should have default properties", function () {
-              chai.assert.equal(false, true);
+            it("should return formData._id + file extension", function () {
+              var fileInfo = { name: "B.xyz" }
+              var formData = { _id: "A" };
+              var fileName = Server.upload.init.getFileName(fileInfo, formData);
+              chai.assert.equal(fileName, "A.xyz");
             });
           });
         });
@@ -50,15 +53,18 @@ if (!(typeof MochaWeb === 'undefined')){
         describe("insert", function() {
 
           it("should return false without userId", function () {
-            var result = owner.insert(undefined, {});
+            var result = owner.insert(undefined, { owner: "A" });
             chai.assert.notOk(result);
           });
 
-          it("should update document's owner with userId", function () {
-            var doc = { owner: "AAA"};
-            var result = owner.insert("XYZ", doc);
+          it("should return false if userId != document owner", function () {
+            var result = owner.insert("B", { owner: "A" });
+            chai.assert.notOk(result);
+          });
+
+          it("should return true if userId == document owner", function () {
+            var result = owner.insert("A", { owner: "A" });
             chai.assert.ok(result);
-            chai.assert.equal(doc.owner, "XYZ");
           });
         });
 
