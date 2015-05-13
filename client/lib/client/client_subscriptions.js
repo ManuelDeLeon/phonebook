@@ -1,0 +1,3 @@
+Client.subscriptions = {
+  mainReady: false
+};

@@ -16,4 +16,4 @@ peerlibrary:fs
 accounts-ui
 dburles:collection-helpers
 manuel:viewmodel-explorer
-msavin:jetsetter
+zodern:nice-reload

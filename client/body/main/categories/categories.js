@@ -17,7 +17,7 @@ Template.categories.viewmodel('categories', {
   },
   selected: null,
   autorun: function() {
-    if (this.selected() && !Categories.findOne(this.selected())) {
+    if (this.selected() && Client.subscriptions.mainReady && !Categories.findOne(this.selected())) {
       this.selected(null);
     }
   },

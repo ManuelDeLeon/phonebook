@@ -7,7 +7,7 @@ Template.contacts.viewmodel('contacts', {
     this.editMode(edit);
   },
   autorun: function() {
-    if (this.selected()) {
+    if (this.selected() && Client.subscriptions.mainReady) {
       this.changeEditMode(!!Contacts.findOne(this.selected()));
     }
   },

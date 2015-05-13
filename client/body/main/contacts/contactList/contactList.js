@@ -1,21 +1,21 @@
 Template.contactList.viewmodel({
   searchObject: function () {
-    var header = ViewModel.byId("header");
-    if (header && header.searchText()) {
-      var r = new RegExp(".*" + header.searchText() + ".*", "i");
-      return {
-        $or: [
+    var searchObject = {};
+    var searchText = Client.searchText();
+    if (searchText) {
+      var r = new RegExp(".*" + searchText + ".*", "i");
+      searchObject['$or'] =
+        [
           { name: r },
           { email: r }
         ]
-      };
+      ;
     }
-    return {};
+    return searchObject;
   },
   contacts: function() {
     var find = this.searchObject();
-    var categories = ViewModel.byId("categories");
-    var categoryId =  categories && categories.selected();
+    var categoryId =  Client.categoryId();
     if (categoryId){
       find.categoryId = categoryId;
     }
