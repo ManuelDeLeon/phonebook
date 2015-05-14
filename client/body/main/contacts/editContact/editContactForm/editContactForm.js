@@ -14,6 +14,14 @@ Template.editContactForm.viewmodel('editContactForm',
     }
   },
   {
+    category: function(){
+      var category = Categories.findOne(this.categoryId());
+      return category ? category.name : '';
+    },
+    imageUrl: function(){
+      var contact = Contacts.findOne(this._id());
+      return contact && contact.imageUrl() || Global.defaultImage;
+    },
     nameInvalid: function () {
       return !this.name();
     },
@@ -66,3 +74,15 @@ Template.editContactForm.viewmodel('editContactForm',
     }
   }
 );
+
+Template.editContactForm.created = function () {
+  console.log("editContactForm.onCreated");
+};
+
+Template.editContactForm.rendered = function () {
+  console.log("editContactForm.onRendered");
+};
+
+Template.editContactForm.destroyed = function () {
+  console.log("editContactForm.onDestroyed");
+};

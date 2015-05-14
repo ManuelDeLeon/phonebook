@@ -1,4 +1,4 @@
-Template.main.viewmodel({
+Template.main.viewmodel('main', {
   onCreated: function(template) {
     template.subscribe('main', function() {
       Client.subscriptions.mainReady = true;

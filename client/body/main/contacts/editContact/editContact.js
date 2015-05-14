@@ -1,34 +1,8 @@
-var cardViewModel = {
-  editVM: function(){
-    return ViewModel.byId("editContactForm");
-  },
-  _id: function(){
-    return this.editVM() && this.editVM()._id();
-  },
-  name: function(){
-    return this.editVM() && this.editVM().name();
-  },
-  number: function(){
-    return this.editVM() && this.editVM().number();
-  },
-  email: function(){
-    return this.editVM() && this.editVM().email();
-  },
-  category: function(){
-    var categoryId = this.editVM() && this.editVM().categoryId()
-    var category = Categories.findOne(categoryId);
-    return category ? category.name : '';
-  },
-  imageUrl: function(){
-    var contact = Contacts.findOne(this._id());
-    return contact && contact.imageUrl() || Global.defaultImage;
-  }
-};
 
 Template.editContact.viewmodel('editContact',
   {
     cardViewModel: function() {
-      return cardViewModel;
+      return ViewModel.byId("editContactForm");
     },
     uploaderEvents: function() {
       return {
@@ -52,5 +26,17 @@ Template.editContact.viewmodel('editContact',
       return vm && vm._id();
     }
   },
-  ['uploaderEvents', 'uploaderData', 'editId', 'cardViewModel']
-)
+  ['uploaderEvents', 'uploaderData', 'cardViewModel']
+);
+
+Template.editContact.created = function () {
+  console.log("editContact.onCreated");
+};
+
+Template.editContact.rendered = function () {
+  console.log("editContact.onRendered");
+};
+
+Template.editContact.destroyed = function () {
+  console.log("editContact.onDestroyed");
+};

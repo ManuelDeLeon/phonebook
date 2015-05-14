@@ -2,15 +2,16 @@
   <div class="ui attached segment">
     <div class="ui two column grid">
       <div class="ui column">
-        {{> card cardViewModel}}
+        {{#if cardViewModel}}
+          {{> card cardViewModel}}
+        {{/if }}
       </div>
       <div class="ui column">
         {{> editContactForm }}
       </div>
     </div>
   </div>
-  {{#if editId }}
-  <div class="ui bottom attached segment">
+  <div class="ui bottom attached segment" data-bind="if: editId">
     <form class="ui form">
       <div class="field" >
         <label>Picture</label>
@@ -18,5 +19,4 @@
       </div>
     </form>
   </div>
-  {{/if }}
 </template>

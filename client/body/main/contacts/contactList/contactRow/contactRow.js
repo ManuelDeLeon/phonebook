@@ -30,13 +30,7 @@ Template.contactRow.viewmodel(
       });
     },
     cardViewModel: function() {
-      return {
-        name: this.name(),
-        number: this.number(),
-        email: this.email(),
-        category: this.category(),
-        imageUrl: this.imageUrl()
-      };
+      return this;
     }
   },
   ['cardViewModel', 'rowHover']

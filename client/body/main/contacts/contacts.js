@@ -15,3 +15,15 @@ Template.contacts.viewmodel('contacts', {
     return this.selected() ? "Edit Contact" : "New Contact";
   }
 }, ['editMode']);
+
+Template.contacts.created = function () {
+  console.log("contacts.onCreated");
+};
+
+Template.contacts.rendered = function () {
+  console.log("contacts.onRendered");
+};
+
+Template.contacts.destroyed = function () {
+  console.log("contacts.onDestroyed");
+};
