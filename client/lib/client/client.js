@@ -7,9 +7,6 @@ Client = {
   validEmail: function(email){
     return !!email && emailRegex.test(email);
   },
-  hasUser: function() {
-    return !!Meteor.userId() || Meteor.loggingIn();
-  },
   categoryId: function(){
     var categories = ViewModel.byId("categories");
     return categories && categories.selected();

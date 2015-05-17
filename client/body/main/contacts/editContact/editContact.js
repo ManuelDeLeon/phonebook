@@ -1,8 +1,8 @@
 
 Template.editContact.viewmodel('editContact',
   {
-    cardViewModel: function() {
-      return ViewModel.byId("editContactForm");
+    editContactFormViewModel: function () {
+      return ViewModel.byId("editContactForm") ;
     },
     uploaderEvents: function() {
       return {
@@ -26,17 +26,5 @@ Template.editContact.viewmodel('editContact',
       return vm && vm._id();
     }
   },
-  ['uploaderEvents', 'uploaderData', 'cardViewModel']
+  ['uploaderEvents', 'uploaderData', 'editContactFormViewModel']
 );
-
-Template.editContact.created = function () {
-  console.log("editContact.onCreated");
-};
-
-Template.editContact.rendered = function () {
-  console.log("editContact.onRendered");
-};
-
-Template.editContact.destroyed = function () {
-  console.log("editContact.onDestroyed");
-};

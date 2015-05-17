@@ -1,4 +1,4 @@
-Template.contactList.viewmodel({
+Template.contactList.viewmodel('contactList', {
   searchObject: function () {
     var searchObject = {};
     var searchText = Client.searchText();
