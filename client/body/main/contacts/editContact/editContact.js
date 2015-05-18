@@ -1,4 +1,3 @@
-
 Template.editContact.viewmodel('editContact',
   {
     editContactFormViewModel: function () {

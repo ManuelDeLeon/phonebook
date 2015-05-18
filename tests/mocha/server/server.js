@@ -20,6 +20,7 @@ if (!(typeof MochaWeb === 'undefined')){
             chai.assert.equal(init.uploadDir, baseDir + '/.uploads');
             chai.assert.equal(init.checkCreateDirectories, true);
             chai.assert.equal(init.maxFileSize, 2000000);
+            chai.assert.equal(init.maxDelRetries, 3);
             chai.assert.equal(init.acceptFileTypes.toString(), (/.(gif|jpe?g|png)$/i).toString());
           });
 
