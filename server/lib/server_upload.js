@@ -13,16 +13,21 @@ Server.upload = {
       return formData._id + ext;
     }
   },
-  maxDelRetries: 3,
+  deleteMaxRetries: 3,
+  deleteRetriesDelay: 60000,
   delete: function(id, fileName, tryCount) {
-    if (tryCount <= Server.upload.maxDelRetries) {
+    if (! _.isNumber(tryCount)){
+      tryCount = 0;
+    }
+    
+    if (tryCount <= Server.upload.deleteMaxRetries) {
       if (! Contacts.findOne(id)) {
         var file = Server.upload.init.uploadDir + "/" + fileName;
         fs.unlink(file, function (err) {
           if (err) {
             Meteor.setTimeout(function () {
               Server.upload.delete(id, fileName, tryCount + 1);
-            }, 60000)
+            }, Server.upload.deleteRetriesDelay)
           }
         });
       }
@@ -35,4 +40,4 @@ Server.upload = {
       });
     }
   }
-}
+};

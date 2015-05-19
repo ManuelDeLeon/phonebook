@@ -12,6 +12,11 @@ if (!(typeof MochaWeb === 'undefined')){
         var upload = Server.upload;
         var init = upload.init;
 
+        it("should have default properties", function () {
+          chai.assert.equal(upload.deleteMaxRetries, 3);
+          chai.assert.equal(upload.deleteRetriesDelay, 60000);
+        });
+
         describe("init", function() {
 
           it("should have default properties", function () {
@@ -20,7 +25,6 @@ if (!(typeof MochaWeb === 'undefined')){
             chai.assert.equal(init.uploadDir, baseDir + '/.uploads');
             chai.assert.equal(init.checkCreateDirectories, true);
             chai.assert.equal(init.maxFileSize, 2000000);
-            chai.assert.equal(init.maxDelRetries, 3);
             chai.assert.equal(init.acceptFileTypes.toString(), (/.(gif|jpe?g|png)$/i).toString());
           });
 
@@ -41,7 +45,7 @@ if (!(typeof MochaWeb === 'undefined')){
             fs.unlink = function(file) {
               deletedFiles.push(file);
             };
-            upload.delete("XYZ.jpg");
+            upload.delete("XYZ", "XYZ.jpg");
             chai.assert.equal(deletedFiles.length, 1);
             chai.assert.equal(deletedFiles[0], init.uploadDir + "/XYZ.jpg");
           });
