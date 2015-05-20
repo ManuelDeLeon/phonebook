@@ -49,6 +49,48 @@ if (!(typeof MochaWeb === 'undefined')){
             chai.assert.equal(deletedFiles.length, 1);
             chai.assert.equal(deletedFiles[0], init.uploadDir + "/XYZ.jpg");
           });
+
+          it("should retry if fs.unlink fails", function (done) {
+            Email.send = function() {};
+            var deletedFiles = [];
+            fs.unlink = function(file, callback) {
+              deletedFiles.push(file);
+              callback("error");
+            };
+            upload.delete("XYZ", "XYZ.jpg", 0, 1, 1);
+            chai.assert.equal(deletedFiles.length, 1);
+            chai.assert.equal(deletedFiles[0], init.uploadDir + "/XYZ.jpg");
+            Global.delay(500, function(){
+              chai.assert.equal(deletedFiles.length, 2);
+              chai.assert.equal(deletedFiles[0], init.uploadDir + "/XYZ.jpg");
+              chai.assert.equal(deletedFiles[1], init.uploadDir + "/XYZ.jpg");
+              done();
+            });
+          });
+
+          xit("should not call fs.unlink or send email if there is a contact", function () {
+            var calledEmail = false;
+            var calledUnlink = false;
+
+            Email.send = function() {
+              calledEmail = true;
+            };
+            fs.unlink = function() {
+              calledUnlink = true;
+            };
+
+            Contacts.findOne = function() {
+              return {};
+            };
+
+            upload.delete("XYZ", "XYZ.jpg", 0, 1, 1);
+            Global.delay(500, function(){
+              chai.assert.isFalse(calledEmail);
+              chai.assert.isFalse(calledUnlink);
+              done();
+            });
+
+          });
         });
       });
 

@@ -25,5 +25,5 @@ Template.editContact.viewmodel('editContact',
       return vm && vm._id();
     }
   },
-  ['uploaderEvents', 'uploaderData', 'editContactFormViewModel']
+  ['uploaderEvents', 'uploaderData', 'editContactFormViewModel', 'editId']
 );

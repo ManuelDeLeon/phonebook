@@ -15,21 +15,20 @@ Server.upload = {
   },
   deleteMaxRetries: 3,
   deleteRetriesDelay: 60000,
-  delete: function(id, fileName, tryCount) {
-    if (! _.isNumber(tryCount)){
-      tryCount = 0;
-    }
-    
-    if (tryCount <= Server.upload.deleteMaxRetries) {
+  delete: function(id, fileName, tryCount, deleteMaxRetries, deleteRetriesDelay) {
+    if (! _.isNumber(tryCount)) tryCount = 0;
+    if (! _.isNumber(deleteMaxRetries)) deleteMaxRetries = Server.upload.deleteMaxRetries;
+    if (! _.isNumber(deleteRetriesDelay)) deleteRetriesDelay = Server.upload.deleteRetriesDelay;
+    if (tryCount <= deleteMaxRetries) {
       if (! Contacts.findOne(id)) {
         var file = Server.upload.init.uploadDir + "/" + fileName;
-        fs.unlink(file, function (err) {
+        fs.unlink(file, Meteor.bindEnvironment(function (err) {
           if (err) {
             Meteor.setTimeout(function () {
-              Server.upload.delete(id, fileName, tryCount + 1);
-            }, Server.upload.deleteRetriesDelay)
+              Server.upload.delete(id, fileName, tryCount + 1, deleteMaxRetries, deleteRetriesDelay);
+            }, deleteRetriesDelay)
           }
-        });
+        }));
       }
     } else {
       Email.send({
