@@ -17,7 +17,6 @@ accounts-ui
 dburles:collection-helpers
 manuel:viewmodel-explorer
 zodern:nice-reload
-mike:mocha
-msavin:jetsetter
 email
-velocity:console-reporter
+
+mike:mocha

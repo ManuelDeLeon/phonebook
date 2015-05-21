@@ -10,7 +10,14 @@ if (!(typeof MochaWeb === 'undefined')){
 
       describe("upload", function() {
         var upload = Server.upload;
+        var deleteMaxRetries = upload.deleteMaxRetries;
+        var deleteRetriesDelay = upload.deleteRetriesDelay;
         var init = upload.init;
+
+        beforeEach(function() {
+          upload.deleteMaxRetries = deleteMaxRetries;
+          upload.deleteRetriesDelay = deleteRetriesDelay;
+        });
 
         it("should have default properties", function () {
           chai.assert.equal(upload.deleteMaxRetries, 3);
@@ -57,10 +64,12 @@ if (!(typeof MochaWeb === 'undefined')){
               deletedFiles.push(file);
               callback("error");
             };
-            upload.delete("XYZ", "XYZ.jpg", 0, 1, 1);
+            upload.deleteMaxRetries = 1;
+            upload.deleteRetriesDelay = 0;
+            upload.delete("XYZ", "XYZ.jpg");
             chai.assert.equal(deletedFiles.length, 1);
             chai.assert.equal(deletedFiles[0], init.uploadDir + "/XYZ.jpg");
-            Global.delay(500, function(){
+            Global.delay(100, function(){
               chai.assert.equal(deletedFiles.length, 2);
               chai.assert.equal(deletedFiles[0], init.uploadDir + "/XYZ.jpg");
               chai.assert.equal(deletedFiles[1], init.uploadDir + "/XYZ.jpg");
@@ -68,7 +77,7 @@ if (!(typeof MochaWeb === 'undefined')){
             });
           });
 
-          xit("should not call fs.unlink or send email if there is a contact", function () {
+          it("should not call fs.unlink or send email if there is a contact", function (done) {
             var calledEmail = false;
             var calledUnlink = false;
 
@@ -82,9 +91,11 @@ if (!(typeof MochaWeb === 'undefined')){
             Contacts.findOne = function() {
               return {};
             };
+            upload.deleteMaxRetries = 1;
+            upload.deleteRetriesDelay = 0;
 
-            upload.delete("XYZ", "XYZ.jpg", 0, 1, 1);
-            Global.delay(500, function(){
+            upload.delete("XYZ", "XYZ.jpg");
+            Global.delay(100, function(){
               chai.assert.isFalse(calledEmail);
               chai.assert.isFalse(calledUnlink);
               done();
