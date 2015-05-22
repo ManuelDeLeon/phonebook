@@ -51,11 +51,66 @@ if (!(typeof MochaWeb === 'undefined')) {
         });
       });
 
-      describe("categoryId", function () {
-        it("should return undefined if", function () {
-          chai.assert.isFalse(true);
+      describe("activeCategoryId", function () {
+        it("should return undefined if there isn't a categories view model", function () {
+          ViewModel.byId = function() {
+            return undefined;
+          };
+          chai.assert.notOk(Client.activeCategoryId());
+        });
+
+        it("should return the selected category", function () {
+          ViewModel.byId = function() {
+            return {
+              selected: function() {
+                return "A";
+              }
+            };
+          };
+          chai.assert.equal(Client.activeCategoryId(), "A");
         });
       });
+
+      describe("activeContactId", function () {
+        it("should return undefined if there isn't a contacts view model", function () {
+          ViewModel.byId = function() {
+            return undefined;
+          };
+          chai.assert.notOk(Client.activeContactId());
+        });
+
+        it("should return the selected contact", function () {
+          ViewModel.byId = function() {
+            return {
+              selected: function() {
+                return "B";
+              }
+            };
+          };
+          chai.assert.equal(Client.activeContactId(), "B");
+        });
+      });
+
+      describe("activeSearchText", function () {
+        it("should return undefined if there isn't a searchText view model", function () {
+          ViewModel.byId = function() {
+            return undefined;
+          };
+          chai.assert.notOk(Client.activeSearchText());
+        });
+
+        it("should return the searchText", function () {
+          ViewModel.byId = function() {
+            return {
+              searchText: function() {
+                return "B";
+              }
+            };
+          };
+          chai.assert.equal(Client.activeSearchText(), "B");
+        });
+      });
+      
     });
   });
 }

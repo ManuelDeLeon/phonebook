@@ -69,12 +69,12 @@ if (!(typeof MochaWeb === 'undefined')){
             upload.delete("XYZ", "XYZ.jpg");
             chai.assert.equal(deletedFiles.length, 1);
             chai.assert.equal(deletedFiles[0], init.uploadDir + "/XYZ.jpg");
-            Global.delay(100, function(){
+            Meteor.setTimeout(function(){
               chai.assert.equal(deletedFiles.length, 2);
               chai.assert.equal(deletedFiles[0], init.uploadDir + "/XYZ.jpg");
               chai.assert.equal(deletedFiles[1], init.uploadDir + "/XYZ.jpg");
               done();
-            });
+            }, 100);
           });
 
           it("should not call fs.unlink or send email if there is a contact", function (done) {
@@ -95,11 +95,11 @@ if (!(typeof MochaWeb === 'undefined')){
             upload.deleteRetriesDelay = 0;
 
             upload.delete("XYZ", "XYZ.jpg");
-            Global.delay(100, function(){
+            Meteor.setTimeout(function(){
               chai.assert.isFalse(calledEmail);
               chai.assert.isFalse(calledUnlink);
               done();
-            });
+            }, 100);
 
           });
         });

@@ -7,15 +7,15 @@ Client = {
   validEmail: function(email){
     return !!email && emailRegex.test(email);
   },
-  categoryId: function(){
+  activeCategoryId: function(){
     var categories = ViewModel.byId("categories");
     return categories && categories.selected();
   },
-  contactId: function(){
+  activeContactId: function(){
     var contacts = ViewModel.byId("contacts");
     return contacts && contacts.selected();
   },
-  searchText: function () {
+  activeSearchText: function () {
     var header = ViewModel.byId("header");
     return header && header.searchText();
   }
