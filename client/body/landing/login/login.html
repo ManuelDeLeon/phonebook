@@ -3,10 +3,10 @@
     <div class="six wide column">
       <div class="ui two column grid top attached">
         <div class="column">
-          <div class="ui button fluid" data-bind="click: isNew(true), class: { positive: isNew }">I'm new here</div>
+          <div id="new-account" class="ui button fluid" data-bind="click: isNew(true), class: { positive: isNew }">I'm new here</div>
         </div>
         <div class="column">
-          <div class="ui button fluid" data-bind="click: isNew(false), class: { positive: !isNew }">I have an account</div>
+          <div id="existing-account" class="ui button fluid" data-bind="click: isNew(false), class: { positive: !isNew }">I have an account</div>
         </div>
       </div>
       <div class="ui form segment attached">
@@ -19,7 +19,7 @@
             </ul>
           </div>
         </div>
-        <div class="field required" data-bind="if: isNew, class: { error: signHover && nameInvalid }">
+        <div id="name-field" class="field required" data-bind="if: isNew, class: { error: signHover && nameInvalid }">
           <label>Name</label>
           <div class="ui icon input">
             <input type="text" placeholder="Name" data-bind="value: name">
@@ -27,21 +27,21 @@
           </div>
         </div>
 
-        <div class="field required" data-bind="class: { error: signHover && emailInvalid }">
+        <div id="email-field" class="field required" data-bind="class: { error: signHover && emailInvalid }">
           <label>Email</label>
           <div class="ui icon input">
             <input type="text" placeholder="Email" data-bind="value: email, returnKey: enter">
             <i class="mail icon"></i>
           </div>
         </div>
-        <div class="field required" data-bind="class: { error: signHover && passwordInvalid }">
+        <div id="password-field" class="field required" data-bind="class: { error: signHover && passwordInvalid }">
           <label>Password</label>
           <div class="ui icon input">
             <input type="password" data-bind="value: password, returnKey: enter">
             <i class="lock icon"></i>
           </div>
         </div>
-        <div class="ui button" data-bind="click: enter, text: signText, class: { primary: !error }, hover: signHover"></div>
+        <div id="enter-button" class="ui button" data-bind="click: enter, text: signText, class: { primary: !error }, hover: signHover"></div>
         <span data-bind="if: !error">You may enter...</span>
       </div>
     </div>
