@@ -7,16 +7,8 @@ Client = {
   validEmail: function(email){
     return !!email && emailRegex.test(email);
   },
-  activeCategoryId: function(){
-    var categories = ViewModel.byId("categories");
-    return categories && categories.selected();
-  },
-  activeContactId: function(){
-    var contacts = ViewModel.byId("contacts");
-    return contacts && contacts.selected();
-  },
-  activeSearchText: function () {
-    var header = ViewModel.byId("header");
-    return header && header.searchText();
+  viewmodelValue: function (vmName, prop) {
+    var vm = ViewModel.byId(vmName);
+    return vm && vm[prop]();
   }
 };

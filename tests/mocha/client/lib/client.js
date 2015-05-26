@@ -51,15 +51,15 @@ if (!(typeof MochaWeb === 'undefined')) {
         });
       });
 
-      describe("activeCategoryId", function () {
-        it("should return undefined if there isn't a categories view model", function () {
+      describe("viewmodelValue", function () {
+        it("should return undefined if there isn't a view model", function () {
           ViewModel.byId = function() {
             return undefined;
           };
-          chai.assert.notOk(Client.activeCategoryId());
+          chai.assert.notOk(Client.viewmodelValue("vm", "value"));
         });
 
-        it("should return the selected category", function () {
+        it("should return the view model value", function () {
           ViewModel.byId = function() {
             return {
               selected: function() {
@@ -67,50 +67,10 @@ if (!(typeof MochaWeb === 'undefined')) {
               }
             };
           };
-          chai.assert.equal(Client.activeCategoryId(), "A");
+          chai.assert.equal(Client.viewmodelValue("vm", "selected"), "A");
         });
       });
 
-      describe("activeContactId", function () {
-        it("should return undefined if there isn't a contacts view model", function () {
-          ViewModel.byId = function() {
-            return undefined;
-          };
-          chai.assert.notOk(Client.activeContactId());
-        });
-
-        it("should return the selected contact", function () {
-          ViewModel.byId = function() {
-            return {
-              selected: function() {
-                return "B";
-              }
-            };
-          };
-          chai.assert.equal(Client.activeContactId(), "B");
-        });
-      });
-
-      describe("activeSearchText", function () {
-        it("should return undefined if there isn't a searchText view model", function () {
-          ViewModel.byId = function() {
-            return undefined;
-          };
-          chai.assert.notOk(Client.activeSearchText());
-        });
-
-        it("should return the searchText", function () {
-          ViewModel.byId = function() {
-            return {
-              searchText: function() {
-                return "B";
-              }
-            };
-          };
-          chai.assert.equal(Client.activeSearchText(), "B");
-        });
-      });
-      
     });
   });
 }

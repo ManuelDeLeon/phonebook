@@ -1,6 +1,6 @@
 Template.categories.viewmodel('categories', {
   categories: function() {
-    return Categories.find();
+    return Categories.find( {}, { sort: { name: 1 } } );
   },
   newCategory: '',
   addNewCategory: function() {

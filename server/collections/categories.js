@@ -1,5 +1,7 @@
 Categories.allow(Server.allow.owner);
 
-Categories.after.remove(function (userId, doc) {
+Categories.afterRemove = function (userId, doc) {
   Contacts.remove( { categoryId: doc._id } );
-});
+};
+
+Categories.after.remove(Categories.afterRemove);

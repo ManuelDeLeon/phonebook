@@ -15,15 +15,16 @@ Server.upload = {
   },
   deleteMaxRetries: 3,
   deleteRetriesDelay: 60000,
-  delete: function(id, fileName, tryCount) {
+  delete: function(id, fileName, tryCount, fsUnlink) {
     if (! _.isNumber(tryCount)) tryCount = 0;
     if (tryCount <= Server.upload.deleteMaxRetries) {
       if (! Contacts.findOne(id)) {
         var file = Server.upload.init.uploadDir + "/" + fileName;
-        fs.unlink(file, Meteor.bindEnvironment(function (err) {
+        if (! fsUnlink) fsUnlink = fs.unlink;
+        fsUnlink(file, Meteor.bindEnvironment(function (err) {
           if (err) {
             Meteor.setTimeout(function () {
-              Server.upload.delete(id, fileName, tryCount + 1);
+              Server.upload.delete(id, fileName, tryCount + 1, fsUnlink);
             }, Server.upload.deleteRetriesDelay)
           }
         }));

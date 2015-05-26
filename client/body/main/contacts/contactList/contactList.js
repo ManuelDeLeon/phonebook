@@ -1,7 +1,7 @@
 Template.contactList.viewmodel('contactList', {
   searchObject: function () {
     var searchObject = {};
-    var searchText = Client.activeSearchText();
+    var searchText = Client.viewmodelValue('header', 'searchText');
     if (searchText) {
       var r = new RegExp(".*" + searchText + ".*", "i");
       searchObject['$or'] =
@@ -15,7 +15,7 @@ Template.contactList.viewmodel('contactList', {
   },
   contacts: function() {
     var find = this.searchObject();
-    var categoryId =  Client.activeCategoryId();
+    var categoryId =  Client.viewmodelValue('categories', 'selected');
     if (categoryId){
       find.categoryId = categoryId;
     }

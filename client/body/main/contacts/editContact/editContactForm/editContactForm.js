@@ -1,6 +1,6 @@
 Template.editContactForm.viewmodel('editContactForm',
   function() {
-    var contactId = Client.activeContactId();
+    var contactId = Client.viewmodelValue('contacts', 'selected');
     if (contactId) {
       return Contacts.findOne(contactId);
     } else {
@@ -9,7 +9,7 @@ Template.editContactForm.viewmodel('editContactForm',
         name: '',
         number: '',
         email: '',
-        categoryId: Client.activeCategoryId()
+        categoryId: Client.viewmodelValue('categories', 'selected')
       }
     }
   },
