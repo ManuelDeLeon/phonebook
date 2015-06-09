@@ -53,13 +53,17 @@ if (!(typeof MochaWeb === 'undefined')) {
 
       describe("viewmodelValue", function () {
         it("should return undefined if there isn't a view model", function () {
+          var byId = ViewModel.byId;
           ViewModel.byId = function() {
             return undefined;
           };
-          chai.assert.notOk(Client.viewmodelValue("vm", "value"));
+          var result = Client.viewmodelValue("vm", "value");
+          ViewModel.byId = byId;
+          chai.assert.notOk(result);
         });
 
         it("should return the view model value", function () {
+          var byId = ViewModel.byId;
           ViewModel.byId = function() {
             return {
               selected: function() {
@@ -67,7 +71,9 @@ if (!(typeof MochaWeb === 'undefined')) {
               }
             };
           };
-          chai.assert.equal(Client.viewmodelValue("vm", "selected"), "A");
+          var result = Client.viewmodelValue("vm", "selected");
+          ViewModel.byId = byId;
+          chai.assert.equal(result, "A");
         });
       });
 

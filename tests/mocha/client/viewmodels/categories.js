@@ -17,12 +17,14 @@ if (!(typeof MochaWeb === 'undefined')){
 
         it("should find all and sort by name", function () {
           var locator, options;
+          var find = Categories.find;
           Categories.find = function(l, o){
             locator = l;
             options = o;
             return "A";
           };
           var result = vm.categories();
+          Categories.find = find;
           chai.assert.equal(result, "A");
           chai.assert.isTrue(_.isEqual(locator, {}) );
           chai.assert.isTrue(_.isEqual(options, { sort: { name: 1 } }) );

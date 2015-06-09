@@ -8,12 +8,18 @@ if (!(typeof MochaWeb === 'undefined')){
 
       describe("hasCategories", function() {
         it("should return false when Categories is empty", function () {
-          Categories.findOne = function() { return undefined; };
-          chai.assert.notOk(vm.hasCategories());
+          var find = Categories.find;
+          Categories.findOne = function () { return undefined; };
+          var result = vm.hasCategories();
+          Categories.find = find;
+          chai.assert.notOk(result);
         });
         it("should return true when Categories is not empty", function () {
-          Categories.findOne = function() { return {}; };
-          chai.assert.ok(vm.hasCategories());
+          var findOne = Categories.findOne;
+          Categories.findOne = function () { return {}; };
+          var result = vm.hasCategories();
+          Categories.findOne = findOne;
+          chai.assert.ok(result);
         });
       });
 

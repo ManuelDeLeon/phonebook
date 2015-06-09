@@ -13,7 +13,7 @@ if (!(typeof MochaWeb === 'undefined')){
       });
 
       it("should use category", function () {
-        var bind = Template.card.elementBind(html.find(".meta span[data-bind]");
+        var bind = Template.card.elementBind(".meta span[data-bind]");
         chai.assert.isTrue(_.isEqual(bind, { text: "category" }));
       });
 

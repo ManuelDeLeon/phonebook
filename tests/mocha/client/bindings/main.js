@@ -3,9 +3,10 @@ if (!(typeof MochaWeb === 'undefined')){
     describe("Main Bindings", function() {
 
       it("should use hasCategories", function () {
-        var bind = Template.card.elementBind("div[data-bind]");
+        var bind = Template.main.elementBind("div[data-bind]");
         chai.assert.isTrue(_.isEqual(bind, { if: "hasCategories" }));
       });
+
     });
   });
 }
