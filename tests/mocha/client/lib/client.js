@@ -11,12 +11,14 @@ if (!(typeof MochaWeb === 'undefined')) {
       describe("alert", function () {
         it("should call Blaze.renderWithData", function () {
           var template, data, body;
+          var render = Blaze.renderWithData;
           Blaze.renderWithData = function(t, d, b){
             template = t;
             data = d;
             body = b;
           };
           Client.alert("A");
+          Blaze.renderWithData = render;
           chai.assert.equal(template, Template.alert);
           chai.assert.equal(data, "A");
           chai.assert.equal(body, document.body);

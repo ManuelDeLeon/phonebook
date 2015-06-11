@@ -43,4 +43,4 @@ Template.login.viewmodel('login', {
       });
     }
   }
-})
+});

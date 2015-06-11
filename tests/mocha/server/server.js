@@ -38,7 +38,7 @@ if (!(typeof MochaWeb === 'undefined')){
           describe("getFileName", function() {
 
             it("should return formData._id + file extension", function () {
-              var fileInfo = { name: "B.xyz" }
+              var fileInfo = { name: "B.xyz" };
               var formData = { _id: "A" };
               var fileName = Server.upload.init.getFileName(fileInfo, formData);
               chai.assert.equal(fileName, "A.xyz");
