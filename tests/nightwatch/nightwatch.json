@@ -1,0 +1,24 @@
+{
+  "src_folders" : ["tests"],
+
+
+  "test_settings" : {
+    "default" : {
+
+      "desiredCapabilities" : {
+        "browserName" : "phantomjs",
+        "javascriptEnabled" : true,
+        "acceptSslCerts" : true,
+        "phantomjs.binary.path" : "c:\\selenium\\phantomjs.exe"
+      }
+    },
+
+    "firefox": {
+      "desiredCapabilities" : {
+        "browserName" : "firefox",
+        "javascriptEnabled" : true,
+        "acceptSslCerts" : true
+      }
+    }
+  }
+}
