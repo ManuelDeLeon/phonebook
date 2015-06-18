@@ -49,17 +49,21 @@ if (!(typeof MochaWeb === 'undefined')){
         describe("delete", function() {
           it("should call fs.unlink with right file name", function () {
             var deletedFiles = [];
+            var unlink = fs.unlink;
             fs.unlink = function(file) {
               deletedFiles.push(file);
             };
             upload.delete("XYZ", "XYZ.jpg");
+            fs.unlink = unlink;
             chai.assert.equal(deletedFiles.length, 1);
             chai.assert.equal(deletedFiles[0], init.uploadDir + "/XYZ.jpg");
           });
 
           it("should retry if fs.unlink fails", function (done) {
+            var send = Email.send;
             Email.send = function() {};
             var deletedFiles = [];
+            var unlink = fs.unlink;
             fs.unlink = function(file, callback) {
               deletedFiles.push(file);
               callback("error");
@@ -67,6 +71,8 @@ if (!(typeof MochaWeb === 'undefined')){
             upload.deleteMaxRetries = 1;
             upload.deleteRetriesDelay = 0;
             upload.delete("XYZ", "XYZ.jpg");
+            fs.unlink = unlink;
+            Email.send = send;
             chai.assert.equal(deletedFiles.length, 1);
             chai.assert.equal(deletedFiles[0], init.uploadDir + "/XYZ.jpg");
             Meteor.setTimeout(function(){
@@ -80,14 +86,16 @@ if (!(typeof MochaWeb === 'undefined')){
           it("should not call fs.unlink or send email if there is a contact", function (done) {
             var calledEmail = false;
             var calledUnlink = false;
-
+            var send = Email.send;
             Email.send = function() {
               calledEmail = true;
             };
+            var unlink = fs.unlink;
             fs.unlink = function() {
               calledUnlink = true;
             };
 
+            var findOne = Contacts.findOne;
             Contacts.findOne = function() {
               return {};
             };
@@ -95,6 +103,9 @@ if (!(typeof MochaWeb === 'undefined')){
             upload.deleteRetriesDelay = 0;
 
             upload.delete("XYZ", "XYZ.jpg");
+            fs.unlink = unlink;
+            Email.send = send;
+            Contacts.findOne = findOne;
             Meteor.setTimeout(function(){
               chai.assert.isFalse(calledEmail);
               chai.assert.isFalse(calledUnlink);
