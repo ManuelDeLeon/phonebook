@@ -60,25 +60,29 @@ if (!(typeof MochaWeb === 'undefined')){
           });
 
           it("should retry if fs.unlink fails", function (done) {
+            var calledEmail = false;
             var send = Email.send;
-            Email.send = function() {};
+            Email.send = function() {
+              calledEmail = true;
+            };
             var deletedFiles = [];
             var unlink = fs.unlink;
             fs.unlink = function(file, callback) {
               deletedFiles.push(file);
               callback("error");
             };
-            upload.deleteMaxRetries = 1;
+            upload.deleteMaxRetries = 2;
             upload.deleteRetriesDelay = 0;
             upload.delete("XYZ", "XYZ.jpg");
             fs.unlink = unlink;
-            Email.send = send;
             chai.assert.equal(deletedFiles.length, 1);
             chai.assert.equal(deletedFiles[0], init.uploadDir + "/XYZ.jpg");
             Meteor.setTimeout(function(){
               chai.assert.equal(deletedFiles.length, 2);
               chai.assert.equal(deletedFiles[0], init.uploadDir + "/XYZ.jpg");
               chai.assert.equal(deletedFiles[1], init.uploadDir + "/XYZ.jpg");
+              chai.assert.isTrue(calledEmail);
+              Email.send = send;
               done();
             }, 100);
           });
@@ -162,6 +166,16 @@ if (!(typeof MochaWeb === 'undefined')){
             chai.assert.ok(result);
           });
         });
+
+        describe("fetch", function() {
+
+          it("should use owner", function () {
+            chai.assert.equal(owner.fetch.length, 1);
+            chai.assert.equal(owner.fetch[0], 'owner');
+          });
+
+        });
+
       });
     });
   });

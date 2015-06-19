@@ -17,7 +17,7 @@ Server.upload = {
   deleteRetriesDelay: 60000,
   delete: function(id, fileName, tryCount, fsUnlink) {
     if (! _.isNumber(tryCount)) tryCount = 0;
-    if (tryCount <= Server.upload.deleteMaxRetries) {
+    if (tryCount < Server.upload.deleteMaxRetries) {
       if (! Contacts.findOne(id)) {
         var file = Server.upload.init.uploadDir + "/" + fileName;
         if (! fsUnlink) fsUnlink = fs.unlink;
