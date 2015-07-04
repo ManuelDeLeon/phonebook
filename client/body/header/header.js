@@ -1,3 +1,6 @@
 Template.header.viewmodel('header', {
-  searchText: ''
+  searchText: '',
+  userId: function() {
+    return Meteor.userId();
+  }
 });

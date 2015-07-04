@@ -15,8 +15,7 @@ matb33:collection-hooks
 peerlibrary:fs
 accounts-ui
 dburles:collection-helpers
-manuel:viewmodel-explorer
 zodern:nice-reload
 email
 
-mike:mocha
+meteorhacks:kadira-debug

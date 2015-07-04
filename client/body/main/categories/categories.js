@@ -23,5 +23,6 @@ Template.categories.viewmodel('categories', {
   },
   addTitle: function() {
     return "Add category: " + this.newCategory();
-  }
+  },
+  onUrl: 'selected'
 }, 'categories');

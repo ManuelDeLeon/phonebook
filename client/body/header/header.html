@@ -7,9 +7,9 @@
       <div class="item" >
         {{> loginButtons}}
       </div>
+    {{/if }}
 
-
-      <div class="right menu " >
+      <div class="right menu " data-bind="if: userId" >
         <div class="item">
           <div class="ui icon input inverted">
             <input type="text" placeholder="Search..." data-bind="value: searchText, delay: 400">
@@ -18,6 +18,6 @@
           </div>
         </div>
       </div>
-    {{/if }}
+
   </div>
 </template>

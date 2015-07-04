@@ -5,7 +5,7 @@ Server.upload = {
     tmpDir: baseDir + '/.uploads/tmp',
     uploadDir: baseDir + '/.uploads',
     checkCreateDirectories: true,
-    maxFileSize: 2000000,
+    maxFileSize: 10000000,
     acceptFileTypes: /.(gif|jpe?g|png)$/i,
     getFileName: function (fileInfo, formData) {
       var name = fileInfo.name;

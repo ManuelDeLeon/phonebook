@@ -1,19 +1,26 @@
-Template.editContactForm.viewmodel('editContactForm',
-  function() {
-    var contactId = Client.viewmodelValue('contacts', 'selected');
-    if (contactId) {
-      return Contacts.findOne(contactId);
-    } else {
-      return {
-        _id: null,
-        name: '',
-        number: '',
-        email: '',
-        categoryId: Client.viewmodelValue('categories', 'selected')
-      }
+var getInitialObject =   function() {
+  var contactId = Client.viewmodelValue('contacts', 'selected');
+  if (contactId) {
+    return Contacts.findOne(contactId);
+  } else {
+    return {
+      _id: null,
+      name: '',
+      number: '',
+      email: '',
+      categoryId: Client.viewmodelValue('categories', 'selected')
     }
-  },
+  }
+};
+
+Template.editContactForm.viewmodel('editContactForm', getInitialObject,
   {
+    autorun: function () {
+      var obj = getInitialObject();
+      if (obj) {
+        this.fromJS(obj);
+      }
+    },
     category: function(){
       var category = Categories.findOne(this.categoryId());
       return category ? category.name : '';

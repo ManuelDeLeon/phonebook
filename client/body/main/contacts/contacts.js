@@ -13,5 +13,6 @@ Template.contacts.viewmodel('contacts', {
   },
   editText: function() {
     return this.selected() ? "Edit Contact" : "New Contact";
-  }
+  },
+  onUrl: ['editMode', 'selected']
 }, ['editMode']);
