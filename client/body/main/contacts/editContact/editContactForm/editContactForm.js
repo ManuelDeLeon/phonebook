@@ -17,7 +17,7 @@ Template.editContactForm.viewmodel('editContactForm', getInitialObject,
   {
     autorun: function () {
       var obj = getInitialObject();
-      if (obj) {
+      if (obj && obj._id !== this._id()) {
         this.fromJS(obj);
       }
     },
