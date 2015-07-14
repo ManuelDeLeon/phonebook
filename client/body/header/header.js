@@ -1,6 +1,6 @@
 Template.header.viewmodel('header', {
   searchText: '',
-  userId: function() {
-    return Meteor.userId();
+  showSearch: function() {
+    return Meteor.userId() && !!ViewModel.byId('contactList');
   }
 });
