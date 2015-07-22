@@ -17,5 +17,5 @@ accounts-ui
 dburles:collection-helpers
 zodern:nice-reload
 email
-
+manuel:viewmodel-explorer
 meteorhacks:kadira-debug

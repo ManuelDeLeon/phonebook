@@ -1,10 +1,10 @@
 <template name="main">
     <div class="ui grid">
       <div  class="four wide column">
-        {{> categories }}
+        {{> categories context }}
       </div>
       <div  class="twelve wide column" data-bind="if: hasCategories">
-        {{> contacts }}
+        {{> contacts context }}
       </div>
     </div>
 </template>
