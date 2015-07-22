@@ -3,7 +3,7 @@ Template.categories.viewmodel('categories',
     return {
       // Change the name from 'selectedCategory' to just 'selected'
       // that way I don't have to change the rest of the code for categories.js and category.js
-      selected: context.selectedCategory
+      selected: context.selectedCategory // Use the reference, not the value
     }
   },
   {

@@ -1,5 +1,7 @@
 Template.contactList.viewmodel('contactList',
   function(context){
+    // Add all properties in the context to this view model
+    // In this case it's only selectedCategory
     return context;
   },
   {

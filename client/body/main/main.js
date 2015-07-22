@@ -11,7 +11,7 @@ Template.main.viewmodel('main',
     },
     context: function() {
       return {
-        selectedCategory: this.selectedCategory
+        selectedCategory: this.selectedCategory // Pass the reference, not the value
       }
     }
   },
