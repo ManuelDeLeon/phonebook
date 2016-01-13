@@ -1,10 +1,10 @@
 <template name="contacts">
   <div class="ui two column grid top attached">
     <div class="column">
-      <div class="ui button fluid" data-bind="click: changeEditMode(false), class: { positive: !editMode }">Contacts</div>
+      <div class="ui button fluid" {{b "click: showContacts, class: { positive: !editMode }"}}>Contacts</div>
     </div>
     <div class="column">
-      <div class="ui button fluid" data-bind="click: changeEditMode(true), text: editText, class: { positive: editMode }">New Contact</div>
+      <div class="ui button fluid" {{b "click: editMode(true), text: editText, class: { positive: editMode }"}}></div>
     </div>
   </div>
   {{#if editMode}}

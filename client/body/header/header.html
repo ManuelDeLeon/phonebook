@@ -1,26 +1,23 @@
 <template name="header">
-  <div class="ui fixed main menu inverted">
+  <div class="ui fixed main menu inverted" {{b "style: style"}}>
     <div class="title item">
       <b>Phonebook</b>
     </div>
 
-    <div class="right menu " data-bind="if: showSearch" >
-      <div class="item">
-        <div class="ui icon input inverted">
-          <input type="text" placeholder="Search..." data-bind="value: searchText, delay: 400">
-          <i class="search link icon" data-bind="if: !searchText"></i>
-          <i class="remove link icon" data-bind="if: searchText, click: searchText('')"></i>
-        </div>
-      </div>
-    </div>
-    
     {{#if hasUser }}
       <div class="item" >
         {{> loginButtons}}
       </div>
     {{/if }}
 
-
-
+    <div class="right menu " {{b "if: showSearch"}} >
+      <div class="item">
+        <div class="ui icon input inverted">
+          <input type="text" placeholder="Search..." {{b "value: searchText, throttle: 400"}}>
+          <i class="search link icon" {{b "if: !searchText"}}></i>
+          <i class="remove link icon" {{b "if: searchText, click: searchText('')"}}></i>
+        </div>
+      </div>
+    </div>
   </div>
 </template>

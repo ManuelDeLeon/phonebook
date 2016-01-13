@@ -1,24 +1,24 @@
 <template name="card">
   <div class="ui card">
     <div class="image">
-      <img data-bind="attr: { src: imageUrl }">
+      <img {{b "attr: { src: imageUrl }"}}>
     </div>
     <div class="content">
-      <div class="header" data-bind="text: name"></div>
+      <div class="header" {{b "text: name"}}></div>
       <div class="meta">
-        <span data-bind="text: category"></span>
+        <span {{b "text: category"}}></span>
       </div>
     </div>
     <div class="extra content">
       <div>
         <i class="call icon"></i>
-        <span data-bind="text: number"></span>
+        <span {{b "text: number"}}></span>
       </div>
     </div>
     <div class="extra content">
       <div>
         <i class="mail icon"></i>
-        <span data-bind="text: email"></span>
+        <span {{b "text: email"}}></span>
       </div>
     </div>
   </div>

@@ -1,6 +1,7 @@
-Template.header.viewmodel('header', {
-  searchText: '',
-  showSearch: function() {
-    return Meteor.userId() && !!ViewModel.byId('contactList');
+Template.header.viewmodel({
+  share: 'search',
+  mixin: 'user',
+  style: {
+    height: '45px'
   }
 });

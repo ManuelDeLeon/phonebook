@@ -1,4 +1,5 @@
-Template.login.viewmodel('login', {
+Template.login.viewmodel({
+  mixin: 'email',
   isNew: true,
   signText: function() {
     return this.isNew() ? 'Sign Up' : 'Sign In';
@@ -9,7 +10,7 @@ Template.login.viewmodel('login', {
   },
   email: '',
   emailInvalid: function() {
-    return Client.validEmail(this.email()) ? '' : 'Valid email is required';
+    return this.validEmail(this.email()) ? '' : 'Valid email is required';
   },
   password: '',
   passwordInvalid: function() {

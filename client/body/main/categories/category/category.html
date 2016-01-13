@@ -1,6 +1,6 @@
 <template name="category">
-  <a class="item" data-bind="hover: hovering, class: { active: isActive }, click: select">
-    <span data-bind="text: name"></span>
-    <i class="remove icon red" data-bind="if: hovering, click: delete" title="Delete this category"></i>
+  <a class="item" {{b "hover: hovering, class: { active: selectedCategory === _id }, click: selectedCategory(_id)"}}>
+    <span {{b "text: name"}}></span>
+    <i class="remove icon red" {{b "if: hovering, click: delete, attr: { title: 'Delete: ' + name }" }}></i>
   </a>
 </template>

@@ -2,16 +2,36 @@
   <div class="ui attached segment">
     <div class="ui two column grid">
       <div class="ui column">
-        {{#if editContactFormViewModel}}
-          {{> card editContactFormViewModel}}
-        {{/if }}
+        {{> card cardViewModel}}
       </div>
       <div class="ui column">
-        {{> editContactForm }}
+        <form class="ui form">
+          <div class="field required" {{b "class: { error: upsertHover && !name }"}}>
+            <label>Name</label>
+            <input type="text" placeholder="Name" {{b "value: name"}}>
+          </div>
+          <div class="field required" {{b "class: { error: upsertHover && !number }"}}>
+            <label>Number</label>
+            <input type="text" placeholder="Number" {{b "value: number"}}>
+          </div>
+          <div class="field required" {{b "class: { error: upsertHover && !validEmail(email) }"}}>
+            <label>Email</label>
+            <input type="email" placeholder="Email" {{b "value: email"}}>
+          </div>
+          <div class="field required" {{b "class: { error: upsertHover && !categoryId }"}}>
+            <label>Category</label>
+            <select class="ui search dropdown"
+              {{b "options: categories, optionsText: name, optionsValue: _id, defaultText: 'Select a Category...', value: categoryId"}}>
+            </select>
+          </div>
+          <div class="field">
+            <div class="ui button" {{b "click: upsert, text: upsertText, hover: upsertHover, class: { primary: canUpsert }"}}></div>
+          </div>
+        </form>
       </div>
     </div>
   </div>
-  {{#if editId }}
+  {{#if _id }}
     <div class="ui bottom attached segment" >
       <form class="ui form">
         <div class="field" >

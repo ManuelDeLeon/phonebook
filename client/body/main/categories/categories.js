@@ -1,4 +1,6 @@
-Template.categories.viewmodel('categories', {
+Template.categories.viewmodel({
+  share: 'categories',
+  onUrl: 'selectedCategory',
   categories: function() {
     return Categories.find( {}, { sort: { name: 1 } } );
   },
@@ -8,21 +10,14 @@ Template.categories.viewmodel('categories', {
     if (!self.newCategory()) return;
     Categories.insert({ name: this.newCategory() }, function(err, id) {
         if (err) {
-          toastr.error("Could not update contact: <br>" + err.reason);
+          toastr.error("Could not create the category: <br>" + err.reason);
         } else {
-          self.selected(id);
+          self.selectedCategory(id);
           self.newCategory('');
         }
     });
   },
-  selected: null,
-  autorun: function() {
-    if (this.selected() && Client.subscriptions.mainReady && !Categories.findOne(this.selected())) {
-      this.selected(null);
-    }
-  },
   addTitle: function() {
     return "Add category: " + this.newCategory();
-  },
-  onUrl: 'selected'
-}, 'categories');
+  }
+});

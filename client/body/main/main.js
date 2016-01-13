@@ -1,8 +1,6 @@
-Template.main.viewmodel('main', {
+Template.main.viewmodel({
   onCreated: function(template) {
-    template.subscribe('main', function() {
-      Client.subscriptions.mainReady = true;
-    });
+    template.subscribe('main');
   },
   hasCategories: function () {
     return !!Categories.findOne();

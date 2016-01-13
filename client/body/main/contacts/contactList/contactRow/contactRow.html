@@ -1,21 +1,21 @@
 <template name="contactRow">
-  <tr class="pointer" data-bind="hover: rowHover, click: rowClick, class: { warning: rowHover }">
+  <tr class="pointer" {{b "hover: rowHover, click: rowClick, class: { warning: rowHover }"}}>
     <td>
-      <img class="ui avatar image" data-bind="attr: { src: imageUrl }">
-
-        <div class="ui form" data-bind="if: rowHover">
+      <img class="ui avatar image" {{b "attr: { src: thumbnail }"}}>
+        {{#if rowHover }}
+        <div class="ui form" >
           <div class="ui left rail">
             {{> card cardViewModel }}
           </div>
         </div>
-
+        {{/if }}
     </td>
-    <td data-bind="text: name"></td>
-    <td data-bind="text: number"></td>
-    <td data-bind="text: email"></td>
-    <td data-bind="text: category"></td>
+    <td {{b "text: name"}}></td>
+    <td {{b "text: number"}}></td>
+    <td {{b "text: email"}}></td>
+    <td {{b "text: categoryName"}}></td>
     <td>
-      <i class="remove icon red" data-bind="if: rowHover, click: delete, attr: { title: deleteTitle }" ></i>
+      <i class="remove icon red" {{b "if: rowHover, click: delete, attr: { title: deleteTitle }"}} ></i>
     </td>
   </tr>
 </template>

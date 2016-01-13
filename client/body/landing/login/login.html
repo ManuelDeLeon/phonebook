@@ -3,46 +3,46 @@
     <div class="six wide column">
       <div class="ui two column grid top attached">
         <div class="column">
-          <div id="new-account" class="ui button fluid" data-bind="click: isNew(true), class: { positive: isNew }">I'm new here</div>
+          <div id="new-account" class="ui button fluid" {{b "click: isNew(true), class: { positive: isNew }"}}>I'm new here</div>
         </div>
         <div class="column">
-          <div id="existing-account" class="ui button fluid" data-bind="click: isNew(false), class: { positive: !isNew }">I have an account</div>
+          <div id="existing-account" class="ui button fluid" {{b "click: isNew(false), class: { positive: !isNew }"}}>I have an account</div>
         </div>
       </div>
       <div class="ui form segment attached">
-        <div class="ui right rail" data-bind="if: signHover && error">
+        <div class="ui right rail" {{b "if: signHover && error"}}>
           <div class="ui red segment">
             <ul class="ui list">
-              <li data-bind="text: nameInvalid, if: nameInvalid"></li>
-              <li data-bind="text: emailInvalid, if: emailInvalid"></li>
-              <li data-bind="text: passwordInvalid, if: passwordInvalid"></li>
+              <li {{b "text: nameInvalid, if: nameInvalid"}}></li>
+              <li {{b "text: emailInvalid, if: emailInvalid"}}></li>
+              <li {{b "text: passwordInvalid, if: passwordInvalid"}}></li>
             </ul>
           </div>
         </div>
-        <div id="name-field" class="field required" data-bind="if: isNew, class: { error: signHover && nameInvalid }">
+        <div id="name-field" class="field required" {{b "if: isNew, class: { error: signHover && nameInvalid }"}}>
           <label>Name</label>
           <div class="ui icon input">
-            <input type="text" placeholder="Name" data-bind="value: name">
+            <input type="text" placeholder="Name" {{b "value: name"}}>
             <i class="user icon"></i>
           </div>
         </div>
 
-        <div id="email-field" class="field required" data-bind="class: { error: signHover && emailInvalid }">
+        <div id="email-field" class="field required" {{b "class: { error: signHover && emailInvalid }"}}>
           <label>Email</label>
           <div class="ui icon input">
-            <input type="text" placeholder="Email" data-bind="value: email, returnKey: enter">
+            <input type="text" placeholder="Email" {{b "value: email, enter: enter"}}>
             <i class="mail icon"></i>
           </div>
         </div>
-        <div id="password-field" class="field required" data-bind="class: { error: signHover && passwordInvalid }">
+        <div id="password-field" class="field required" {{b "class: { error: signHover && passwordInvalid }"}}>
           <label>Password</label>
           <div class="ui icon input">
-            <input type="password" data-bind="value: password, returnKey: enter">
+            <input type="password" {{b "value: password, enter: enter"}}>
             <i class="lock icon"></i>
           </div>
         </div>
-        <div id="enter-button" class="ui button" data-bind="click: enter, text: signText, class: { primary: !error }, hover: signHover"></div>
-        <span data-bind="if: !error">You may enter...</span>
+        <div id="enter-button" class="ui button" {{b "click: enter, text: signText, class: { primary: !error }, hover: signHover"}}></div>
+        <span {{b "if: !error"}}>You may enter...</span>
       </div>
     </div>
   </div>

@@ -1,6 +1,6 @@
 <template name="categories">
   <div class="ui vertical menu purple">
-    <a class="item" data-bind="class: { active: !selected }, click: selected(null)">
+    <a class="item" {{b "class: { active: !selectedCategory }, click: selectedCategory(null)"}}>
       <b>All Categories</b>
     </a>
     {{#each categories}}
@@ -8,8 +8,8 @@
     {{/each }}
     <div class="item">
       <div class="ui transparent icon input">
-        <input type="text" placeholder="New Category..." data-bind="value: newCategory, returnKey: addNewCategory">
-        <i class="plus icon green link" data-bind="if: newCategory, click: addNewCategory, attr: { title: addTitle }" ></i>
+        <input type="text" placeholder="New Category..." {{b "value: newCategory, enter: addNewCategory"}}>
+        <i class="plus icon green link" {{b "if: newCategory, click: addNewCategory, attr: { title: addTitle }"}} ></i>
       </div>
     </div>
   </div>

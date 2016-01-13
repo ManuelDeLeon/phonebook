@@ -1,1 +1,3 @@
-View
+Template.body.viewmodel({
+  mixin: 'user'
+})

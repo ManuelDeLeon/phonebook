@@ -1,9 +1,15 @@
-Template.contactList.viewmodel('contactList', {
+Template.contactList.viewmodel({
+  share: ['search', 'categories'],
+  onRendered: function(){
+    this.showSearch(true);
+  },
+  onDestroyed: function(){
+    this.showSearch(false);
+  },
   searchObject: function () {
     var searchObject = {};
-    var searchText = Client.viewmodelValue('header', 'searchText');
-    if (searchText) {
-      var r = new RegExp(".*" + searchText + ".*", "i");
+    if (this.searchText()) {
+      var r = new RegExp(".*" + this.searchText() + ".*", "i");
       searchObject['$or'] =
         [
           { name: r },
@@ -15,10 +21,10 @@ Template.contactList.viewmodel('contactList', {
   },
   contacts: function() {
     var find = this.searchObject();
-    var categoryId =  Client.viewmodelValue('categories', 'selected');
+    var categoryId =  this.selectedCategory();
     if (categoryId){
       find.categoryId = categoryId;
     }
     return Contacts.find(find, { sort: { name: 1 } } );
   }
-}, 'contacts');
+});
