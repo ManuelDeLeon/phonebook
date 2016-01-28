@@ -43,8 +43,8 @@ localstorage@1.0.5
 logging@1.0.8
 manuel:isdev@1.0.0
 manuel:reactivearray@1.0.5
-manuel:viewmodel@2.7.8
-manuel:viewmodel-debug@2.5.1
+manuel:viewmodel@2.10.1-beta
+manuel:viewmodel-debug@2.6.0
 matb33:collection-hooks@0.8.1
 meteor@1.1.10
 meteor-base@1.0.1

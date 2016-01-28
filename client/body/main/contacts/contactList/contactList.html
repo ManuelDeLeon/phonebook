@@ -1,19 +1,17 @@
 <template name="contactList">
   <table class="ui attached table">
     <thead>
-    <th></th>
-    <th>Name</th>
-    <th>Number</th>
-    <th>Email</th>
-    <th>Category</th>
-    <th>
-      <i class="remove icon" style="visibility: hidden" ></i>
-    </th>
+      <th></th>
+      <th>Name</th>
+      <th>Number</th>
+      <th>Email</th>
+      <th>Category</th>
+      <th><i class="remove icon" style="visibility: hidden" ></i></th>
     </thead>
     <tbody>
-    {{#each contacts }}
-      {{> contactRow }}
-    {{/each}}
+      {{#each contacts }}
+        {{> contactRow }}
+      {{/each}}
     </tbody>
   </table>
 </template>

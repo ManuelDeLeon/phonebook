@@ -8,6 +8,7 @@ Template.category.viewmodel({
       image: "trash",
       onApprove: function () {
         Categories.remove(self._id());
+        self.selectedCategory(null);
       }
     });
   }

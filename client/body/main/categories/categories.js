@@ -9,12 +9,12 @@ Template.categories.viewmodel({
     var self = this;
     if (!self.newCategory()) return;
     Categories.insert({ name: this.newCategory() }, function(err, id) {
-        if (err) {
-          toastr.error("Could not create the category: <br>" + err.reason);
-        } else {
-          self.selectedCategory(id);
-          self.newCategory('');
-        }
+      if (err) {
+        toastr.error("Could not create the category: <br>" + err.reason);
+      } else {
+        self.selectedCategory(id);
+        self.newCategory(null);
+      }
     });
   },
   addTitle: function() {
