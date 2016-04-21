@@ -7,6 +7,7 @@ Template.editContact.viewmodel({
     } else {
       this.categoryId( this.selectedCategory() );
     }
+    this.categoriesDropdown.dropdown();
   },
   cardViewModel: function() {
     return this;

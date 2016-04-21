@@ -20,8 +20,8 @@
           </div>
           <div class="field required" {{b "class: { error: upsertHover && !categoryId }"}}>
             <label>Category</label>
-            <select class="ui search dropdown"
-              {{b "options: categories, optionsText: name, optionsValue: _id, defaultText: 'Select a Category...', value: categoryId"}}>
+            <select class="ui dropdown"
+              {{b "ref: categoriesDropdown, options: categories, optionsText: name, optionsValue: _id, defaultText: 'Select a Category...', value: categoryId"}}>
             </select>
           </div>
           <div class="field">
