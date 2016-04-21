@@ -3,6 +3,7 @@ Template.editContact.viewmodel({
   share: ['categories', 'edited'],
   autorun: function() {
     var t = this.templateInstance;
+    // console.log(this.categoryId());
     t.$('.ui.search.dropdown').dropdown('set selected', this.categoryId());
   },
   onRendered: function(t) {
@@ -12,6 +13,9 @@ Template.editContact.viewmodel({
       this.categoryId( this.selectedCategory() );
       t.$('.ui.search.dropdown').dropdown();
     }
+  },
+  doChangeCategory: function(e) {
+    this.categoryId(e.target.value);
   },
   cardViewModel: function() {
     return this;

@@ -21,7 +21,7 @@
           <div class="field required" {{b "class: { error: upsertHover && !categoryId }"}}>
             <label>Category</label>
             <select class="ui search dropdown"
-              {{b "options: categories, optionsText: name, optionsValue: _id, defaultText: 'Select a Category...', value: categoryId"}}>
+              {{b "change: doChangeCategory, options: categories, optionsText: name, optionsValue: _id, defaultText: 'Select a Category...'"}}>
             </select>
           </div>
           <div class="field">
