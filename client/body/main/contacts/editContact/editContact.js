@@ -1,18 +1,13 @@
 Template.editContact.viewmodel({
   mixin: 'email',
   share: ['categories', 'edited'],
-  autorun: function() {
-    var t = this.templateInstance;
-    // console.log(this.categoryId());
-    t.$('.ui.search.dropdown').dropdown('set selected', this.categoryId());
-  },
   onRendered: function(t) {
     if (this._id()) {
       this.load( Contacts.findOne(this._id()) );
     } else {
       this.categoryId( this.selectedCategory() );
-      t.$('.ui.search.dropdown').dropdown();
     }
+    t.$('.ui.search.dropdown').dropdown('set selected', this.categoryId());
   },
   doChangeCategory: function(e) {
     this.categoryId(e.target.value);
