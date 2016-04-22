@@ -2,12 +2,15 @@ Template.editContact.viewmodel({
   mixin: 'email',
   share: ['categories', 'edited'],
   onRendered: function() {
+    var that = this;
     if (this._id()) {
       this.load( Contacts.findOne(this._id()) );
     } else {
       this.categoryId( this.selectedCategory() );
     }
     this.categoriesDropdown.dropdown('set selected', this.categoryId());
+
+    this.categoriesDropdown.on('change', function(e) { that.categoryId(e.target.value) })
   },
   cardViewModel: function() {
     return this;
