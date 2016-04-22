@@ -8,3 +8,4 @@
 /smart.lock
 /tests/nightwatch/reports
 /tests/nightwatch/tests_output
+/.uploads
